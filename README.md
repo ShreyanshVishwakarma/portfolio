@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Developer Portfolio Starter
 
-## Getting Started
+A polished developer portfolio scaffold built with Next.js 16, TypeScript, and Tailwind CSS v4. It ships with the essential sections you need to tell your story, showcase projects, and invite new collaborations.
 
-First, run the development server:
+## ✨ Highlights
+
+- **Hero & narrative:** Clear positioning, availability badge, and quick CTAs.
+- **About & skills:** Ready-made copy structure with editable bullet points and a responsive skills grid.
+- **Experience timeline:** Card layout for roles, impact statements, and career context.
+- **Project gallery:** Highlight three featured projects with stack chips and outbound links.
+- **Contact CTA:** Gradient call-to-action with customizable social links.
+
+## 🚀 Quick start
+
+Install dependencies and launch the local dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) to view the site. Edits to files inside `app/` trigger instant refreshes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔧 Customizing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Update personal details, sections, and data objects in `app/page.tsx` (look for the `navItems`, `stats`, `experience`, `projects`, and `contactLinks` constants).
+- Adjust global typography or tokens in `app/globals.css`.
+- Drop assets like logos or screenshots into `public/` and reference them with Next.js `<Image />`.
+- Replace `your.name`, social handles, and URLs with your real information before deploying.
 
-## Learn More
+## 📦 Tech stack
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js 16](https://nextjs.org/) App Router
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS v4](https://tailwindcss.com/) (PostCSS-only setup)
+- [Geist](https://vercel.com/font) font family via `next/font`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 Helpful scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev     # Start local development
+npm run build   # Generate production build
+npm run start   # Serve production build
+npm run lint    # Run ESLint
+```
 
-## Deploy on Vercel
+## ☁️ Deploying
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy effortlessly to [Vercel](https://vercel.com/) or your hosting provider of choice. The project is production-ready out of the box—just add environment variables (if any) and connect your repository.
+# portfolio
