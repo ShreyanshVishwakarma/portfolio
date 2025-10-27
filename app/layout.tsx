@@ -12,20 +12,44 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteTitle = "Shreyansh Vishwakarma — Full-Stack Developer";
+const siteDescription =
+  "Full-stack developer building real-time TypeScript and Rust experiences with a focus on performance, security, and developer experience.";
+
 export const metadata: Metadata = {
-  title: "Your Name — Frontend Engineer",
-  description:
-    "Frontend engineer crafting resilient, product-focused web experiences for ambitious teams.",
+  title: {
+    default: siteTitle,
+    template: "%s | Shreyansh Vishwakarma",
+  },
+  description: siteDescription,
+  keywords: [
+    "Shreyansh Vishwakarma",
+    "Full-stack developer",
+    "TypeScript",
+    "Rust",
+    "Next.js",
+    "Real-time applications",
+    "Socket.io",
+    "Convex",
+    "WebAssembly",
+  ],
+  authors: [{ name: "Shreyansh Vishwakarma", url: "https://www.linkedin.com/in/shreyansh-vishwakarma-63a853296/" }],
+  creator: "Shreyansh Vishwakarma",
+  publisher: "Shreyansh Vishwakarma",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Your Name — Frontend Engineer",
-    description:
-      "Frontend engineer crafting resilient, product-focused web experiences for ambitious teams.",
+    title: siteTitle,
+    description: siteDescription,
+    url: "/",
+    siteName: "Shreyansh Vishwakarma Portfolio",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Name — Frontend Engineer",
-    description:
-      "Frontend engineer crafting resilient, product-focused web experiences for ambitious teams.",
+    title: siteTitle,
+    description: siteDescription,
   },
 };
 
