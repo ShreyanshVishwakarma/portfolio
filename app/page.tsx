@@ -1,4 +1,9 @@
+"use client";
+
+import GlareHover from "@/components/GlareHover";
 import Link from "next/link";
+import { useState } from "react";
+import ElectricBorder from "@/components/ElectricBorder";
 import FuzzyText from "@/components/FuzzyText";
 import { Button } from "@/components/ui/button";
 import {
@@ -45,12 +50,6 @@ const navItems = [
   { label: "Projects", href: "#projects" },
   { label: "Journey", href: "#journey" },
   { label: "Contact", href: "#contact" },
-];
-
-const stats = [
-  { label: "Projects Shipped", value: "4+", icon: Rocket },
-  { label: "Real-time Features", value: "3", icon: Zap },
-  { label: "Hackathon Wins", value: "1", icon: Sparkles },
 ];
 
 const skillCategories = [
@@ -194,6 +193,7 @@ const contactLinks = [
 ];
 
 export default function Home() {
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
   return (
     <TooltipProvider>
       <div className="min-h-screen bg-background">
@@ -272,34 +272,45 @@ export default function Home() {
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Button asChild size="lg" className="gap-2">
-                <a href="mailto:shreyanshvish004@gmail.com">
-                  Start a project
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <a href="/resume.pdf">Download résumé</a>
-              </Button>
-            </div>
+              <ElectricBorder
+                color="#7df9ff"
+                speed={isButtonHovered ? 3 : 1}
+                chaos={isButtonHovered ? 0.2 : 0.1}
+                thickness={4}
+                style={{ borderRadius: 16 }}
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  onMouseEnter={() => setIsButtonHovered(true)}
+                  onMouseLeave={() => setIsButtonHovered(false)}
+                  variant="ghost"
+                  className="gap-2"
+                >
+                  <a href="mailto:shreyanshvish004@gmail.com">
+                    Contact
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Button>
+              </ElectricBorder>
 
-            {/* Stats */}
-            <div className="mt-20 grid w-full max-w-3xl gap-4 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <Card key={stat.label}>
-                  <CardContent className="flex flex-col items-center p-6">
-                    <div className="mb-3 rounded-lg bg-muted p-3">
-                      <stat.icon className="h-6 w-6" />
-                    </div>
-                    <span className="text-4xl font-bold tracking-tight">
-                      {stat.value}
-                    </span>
-                    <span className="mt-1 text-sm text-muted-foreground">
-                      {stat.label}
-                    </span>
-                  </CardContent>
-                </Card>
-              ))}
+              <div className="h-1">
+                <GlareHover
+                  width="165px"
+                  height="42px"
+                  className="h-1"
+                  glareColor="#ffffff"
+                  glareOpacity={0.3}
+                  glareAngle={-30}
+                  glareSize={300}
+                  transitionDuration={800}
+                  playOnce={false}
+                >
+                  <Button asChild variant="ghost" size="lg">
+                    <a href="/resume.pdf">Download résumé</a>
+                  </Button>
+                </GlareHover>
+              </div>
             </div>
           </section>
 
