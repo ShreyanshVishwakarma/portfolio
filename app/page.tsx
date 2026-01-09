@@ -273,10 +273,10 @@ export default function Home() {
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <ElectricBorder
+                className="lskdfj"
                 color="#7df9ff"
                 speed={isButtonHovered ? 3 : 1}
                 chaos={isButtonHovered ? 0.2 : 0.1}
-                thickness={4}
                 style={{ borderRadius: 16 }}
               >
                 <Button
