@@ -1,4 +1,43 @@
 import Link from "next/link";
+import FuzzyText from "@/components/FuzzyText";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { ThemeToggle } from "@/components/theme-toggle";
+import {
+  Code2,
+  Database,
+  Globe,
+  Rocket,
+  Terminal,
+  Zap,
+  Mail,
+  Linkedin,
+  Send,
+  Github,
+  ArrowUpRight,
+  Sparkles,
+  Target,
+  Heart,
+} from "lucide-react";
+
+import TextPressure from "@/components/TextPressure";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -9,37 +48,62 @@ const navItems = [
 ];
 
 const stats = [
-  { label: "Full-stack projects delivered", value: "4+" },
-  { label: "Real-time features shipped", value: "3" },
-  { label: "Hackathon awards", value: "1" },
+  { label: "Projects Shipped", value: "4+", icon: Rocket },
+  { label: "Real-time Features", value: "3", icon: Zap },
+  { label: "Hackathon Wins", value: "1", icon: Sparkles },
 ];
 
-const skillGroups = [
+const skillCategories = [
   {
-    title: "Programming Languages",
-    items: ["TypeScript", "JavaScript", "Rust", "C"],
+    id: "languages",
+    label: "Languages",
+    icon: Code2,
+    skills: [
+      { name: "TypeScript", level: 90 },
+      { name: "JavaScript", level: 95 },
+      { name: "Rust", level: 70 },
+      { name: "C", level: 65 },
+    ],
   },
   {
-    title: "Frontend",
-    items: ["Next.js 15", "React 19", "Tailwind CSS", "HTML5", "CSS3", "Bootstrap", "jQuery", "GSAP"],
+    id: "frontend",
+    label: "Frontend",
+    icon: Globe,
+    skills: [
+      { name: "Next.js 15", level: 90 },
+      { name: "React 19", level: 92 },
+      { name: "Tailwind CSS", level: 95 },
+      { name: "GSAP", level: 80 },
+    ],
   },
   {
-    title: "Backend & Realtime",
-    items: ["Node.js", "Express.js", "Socket.io", "JWT Auth"],
+    id: "backend",
+    label: "Backend",
+    icon: Terminal,
+    skills: [
+      { name: "Node.js", level: 88 },
+      { name: "Express.js", level: 85 },
+      { name: "Socket.io", level: 82 },
+      { name: "JWT Auth", level: 80 },
+    ],
   },
   {
-    title: "Databases",
-    items: ["MongoDB", "Redis", "Convex DB"],
-  },
-  {
-    title: "Tools & Platforms",
-    items: ["Git", "GitHub", "Vercel", "VS Code"],
+    id: "database",
+    label: "Database",
+    icon: Database,
+    skills: [
+      { name: "MongoDB", level: 85 },
+      { name: "Redis", level: 70 },
+      { name: "Convex DB", level: 75 },
+    ],
   },
 ];
 
-const journeyColumns = [
+const journeyItems = [
   {
     title: "Currently exploring",
+    icon: Target,
+    color: "from-violet-500 to-purple-500",
     items: [
       "Advanced TypeScript patterns",
       "Microservices architecture",
@@ -49,6 +113,8 @@ const journeyColumns = [
   },
   {
     title: "Next goals",
+    icon: Rocket,
+    color: "from-blue-500 to-cyan-500",
     items: [
       "Contribute to open-source Rust projects",
       "Master system design patterns",
@@ -58,6 +124,8 @@ const journeyColumns = [
   },
   {
     title: "Interests",
+    icon: Heart,
+    color: "from-rose-500 to-pink-500",
     items: [
       "Performance optimization",
       "Real-time systems",
@@ -75,6 +143,8 @@ const projects = [
     stack: ["Next.js", "TypeScript", "Socket.io", "Convex", "Clerk"],
     link: "https://justchatting-eight.vercel.app",
     repo: "https://github.com/ShreyanshVishwakarma/justchatting",
+    gradient: "from-violet-600 via-purple-600 to-indigo-600",
+    featured: true,
   },
   {
     title: "ScriptSorcery Reimagine",
@@ -83,6 +153,8 @@ const projects = [
     stack: ["HTML5", "CSS3", "JavaScript", "GSAP", "Bootstrap"],
     link: "https://script-sorcery-reimagine-round1.vercel.app",
     repo: "https://github.com/ShreyanshVishwakarma/ScriptSorceryReimagineRound1",
+    gradient: "from-amber-500 via-orange-500 to-rose-500",
+    featured: true,
   },
   {
     title: "Book Store API",
@@ -91,6 +163,8 @@ const projects = [
     stack: ["Node.js", "Express.js", "MongoDB", "JWT", "Mongoose"],
     link: "https://github.com/ShreyanshVishwakarma/Book-store-API",
     repo: "https://github.com/ShreyanshVishwakarma/Book-store-API",
+    gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+    featured: false,
   },
   {
     title: "RustyTodo",
@@ -99,329 +173,480 @@ const projects = [
     stack: ["Rust", "Serde", "CLI"],
     link: "https://github.com/ShreyanshVishwakarma/rustytodo",
     repo: "https://github.com/ShreyanshVishwakarma/rustytodo",
+    gradient: "from-slate-600 via-zinc-600 to-neutral-600",
+    featured: false,
   },
 ];
 
 const contactLinks = [
-  { label: "Email", href: "mailto:shreyanshvish004@gmail.com" },
+  { label: "Email", href: "mailto:shreyanshvish004@gmail.com", icon: Mail },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/shreyansh-vishwakarma-63a853296/",
+    icon: Linkedin,
   },
-  { label: "Telegram", href: "https://t.me/shreyanshvishwakarma" },
-  { label: "GitHub", href: "https://github.com/ShreyanshVishwakarma" },
+  { label: "Telegram", href: "https://t.me/shreyanshvishwakarma", icon: Send },
+  {
+    label: "GitHub",
+    href: "https://github.com/ShreyanshVishwakarma",
+    icon: Github,
+  },
 ];
-
-type SectionHeadingProps = {
-  eyebrow: string;
-  title: string;
-  description?: string;
-};
-
-function SectionHeading({ eyebrow, title, description }: SectionHeadingProps) {
-  return (
-    <div className="max-w-xl space-y-2">
-      <span className="inline-flex items-center rounded-full border border-zinc-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">
-        {eyebrow}
-      </span>
-      <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-        {title}
-      </h2>
-      {description ? (
-        <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-          {description}
-        </p>
-      ) : null}
-    </div>
-  );
-}
 
 export default function Home() {
   return (
-  <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.12),transparent_50%)]">
-      <header className="sticky top-0 z-10 border-b border-zinc-100 bg-white/80 backdrop-blur dark:border-zinc-900 dark:bg-black/50">
-        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-          <Link href="#home" className="text-sm font-semibold uppercase tracking-[0.35em] text-zinc-700 dark:text-zinc-200">
-            shreyansh.dev
-          </Link>
-          <nav className="hidden gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-400 sm:flex">
-            {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="transition-colors hover:text-zinc-900 dark:hover:text-zinc-100">
-                {item.label}
-              </a>
-            ))}
-          </nav>
-          <a
-            href="mailto:shreyanshvish004@gmail.com"
-            className="hidden rounded-full border border-zinc-200 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:bg-zinc-900 hover:text-white dark:border-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-100 dark:hover:text-zinc-900 sm:inline-flex"
-          >
-            Let&apos;s talk
-          </a>
-        </div>
-      </header>
+    <TooltipProvider>
+      <div className="min-h-screen bg-background">
+        {/* Navigation */}
+        <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+          <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+            <Link href="#home" className="flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">
+                S
+              </div>
+              <span className="hidden text-sm font-semibold tracking-tight sm:inline">
+                shreyansh.dev
+              </span>
+            </Link>
 
-      <main id="home" className="mx-auto flex max-w-5xl flex-col gap-24 px-6 pb-24 pt-20 sm:gap-32 sm:pt-32">
-        <section className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center">
-          <div className="space-y-8">
-            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-zinc-900 px-4 py-1 text-sm font-medium text-white dark:bg-zinc-100 dark:text-zinc-900">
-              <span className="size-2 rounded-full bg-emerald-400" aria-hidden />
-              Available for new projects
-            </span>
-            <div className="space-y-6">
-              <h1 className="text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
-                Full-stack developer building real-time, resilient experiences.
-              </h1>
-              <p className="max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-                I design and ship TypeScript- and Rust-powered products that feel fast, secure, and intuitive. From
-                local-first chat platforms to award-winning frontends, I love turning ambitious ideas into dependable software.
-              </p>
-            </div>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <a
-                href="mailto:shreyanshvish004@gmail.com"
-                className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
-              >
-                Start a project
-              </a>
-              <a
-                href="/resume.pdf"
-                className="inline-flex items-center justify-center rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-700 transition hover:border-zinc-900 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-100 dark:hover:text-zinc-100"
-              >
-                Download résumé
-              </a>
-            </div>
-            <ul className="grid gap-4 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <li
-                  key={stat.label}
-                  className="rounded-3xl border border-zinc-100 bg-white/60 p-6 text-sm shadow-sm backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/50"
-                >
-                  <p className="text-3xl font-semibold text-zinc-900 dark:text-zinc-50">{stat.value}</p>
-                  <p className="mt-2 text-xs uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
-                    {stat.label}
-                  </p>
-                </li>
+            <nav className="hidden items-center gap-1 md:flex">
+              {navItems.map((item) => (
+                <Button key={item.href} variant="ghost" size="sm" asChild>
+                  <a href={item.href}>{item.label}</a>
+                </Button>
               ))}
-            </ul>
-          </div>
+            </nav>
 
-          <div className="rounded-3xl border border-zinc-100 bg-white/70 p-10 shadow-lg backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/60">
-            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">What I&apos;m focused on</h3>
-            <ul className="mt-6 space-y-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              <li>
-                <span className="font-semibold text-zinc-900 dark:text-zinc-100">Real-time collaboration:</span> crafting Socket.io-powered experiences that stay responsive, even offline.
-              </li>
-              <li>
-                <span className="font-semibold text-zinc-900 dark:text-zinc-100">Systems & Rust:</span> exploring WebAssembly and memory-safe tooling for blazing fast workflows.
-              </li>
-              <li>
-                <span className="font-semibold text-zinc-900 dark:text-zinc-100">Developer enablement:</span> building DX guardrails with TypeScript, testing, and automation that scale.
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <section id="about" className="scroll-mt-24">
-          <SectionHeading
-            eyebrow="About"
-            title="A systems-minded builder who ships"
-            description="I blend product thinking with full-stack execution—pairing Rust, TypeScript, and thoughtful UX to craft reliable, human-centered software."
-          />
-          <div className="mt-8 grid gap-8 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 md:grid-cols-2">
-            <p>
-              I&apos;m Shreyansh Vishwakarma, a full-stack developer who thrives on turning real-time ideas into production-ready products. I love designing architectures that stay resilient under load, whether that&apos;s an encrypted chat platform, a story-driven frontend, or a developer tool.
-            </p>
-            <div className="space-y-3">
-              <p>
-                When I&apos;m not shipping features, I&apos;m exploring advanced TypeScript patterns, diving into Rust ecosystems, or experimenting with WebAssembly to squeeze out more performance.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2">
-                  <span className="size-2 rounded-full bg-emerald-400" aria-hidden />
-                  Remote-first collaborator based in India—happy to sync across time zones
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="size-2 rounded-full bg-blue-400" aria-hidden />
-                  Hackathon-winning frontend storyteller with a love for motion design
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="size-2 rounded-full bg-purple-400" aria-hidden />
-                  Actively building and contributing to open-source tooling and real-time ecosystems
-                </li>
-              </ul>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Button asChild size="sm">
+                <a href="mailto:shreyanshvish004@gmail.com" className="gap-2">
+                  <Mail className="h-4 w-4" />
+                  <span className="hidden sm:inline">Let&apos;s talk</span>
+                </a>
+              </Button>
             </div>
           </div>
-        </section>
+        </header>
 
-        <section id="skills" className="scroll-mt-24">
-          <SectionHeading
-            eyebrow="Toolkit"
-            title="Skills that move ideas forward"
-            description="TypeScript, Rust, and a modern web stack for building fast, secure experiences."
-          />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {skillGroups.map((group) => (
-              <article
-                key={group.title}
-                className="flex h-full flex-col justify-between rounded-2xl border border-zinc-100 bg-white/70 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/60"
-              >
-                <div className="space-y-4">
-                  <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-50">{group.title}</h3>
-                  <ul className="flex flex-wrap gap-2 text-xs font-medium text-zinc-600 dark:text-zinc-400">
-                    {group.items.map((item) => (
-                      <li
-                        key={item}
-                        className="rounded-full border border-zinc-200 px-3 py-1 dark:border-zinc-700"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+        <main className="mx-auto max-w-6xl px-4 sm:px-6">
+          {/* Hero Section */}
+          <section
+            id="home"
+            className="flex min-h-[90vh] flex-col items-center justify-center py-20 text-center"
+          >
+            <Badge variant="secondary" className="mb-6 gap-2">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+              Available for new projects
+            </Badge>
+
+            <div className=" w-full text-4xl tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-left overflow-visible">
+              <div className="mb-4 text-muted-foreground pl-6 font-light">
+                <FuzzyText baseIntensity={0.2}>Hi , I'm</FuzzyText>
+              </div>
+
+              <div className="w-full relative">
+                <TextPressure
+                  text="Shreyansh"
+                  stroke={true}
+                  flex={true}
+                  italic={true}
+                  width={true}
+                  strokeColor="#3ceaea"
+                />
+              </div>
+              <TextPressure
+                text="Vishwakarma"
+                stroke={true}
+                flex={true}
+                italic={true}
+                width={true}
+                strokeColor="#3ceaea"
+              />
+            </div>
+
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
+              Full-stack developer specializing in TypeScript, Rust, and modern
+              web technologies. I build production-ready applications that are
+              fast, secure, and delightful to use.
+            </p>
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <Button asChild size="lg" className="gap-2">
+                <a href="mailto:shreyanshvish004@gmail.com">
+                  Start a project
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <a href="/resume.pdf">Download résumé</a>
+              </Button>
+            </div>
+
+            {/* Stats */}
+            <div className="mt-20 grid w-full max-w-3xl gap-4 sm:grid-cols-3">
+              {stats.map((stat) => (
+                <Card key={stat.label}>
+                  <CardContent className="flex flex-col items-center p-6">
+                    <div className="mb-3 rounded-lg bg-muted p-3">
+                      <stat.icon className="h-6 w-6" />
+                    </div>
+                    <span className="text-4xl font-bold tracking-tight">
+                      {stat.value}
+                    </span>
+                    <span className="mt-1 text-sm text-muted-foreground">
+                      {stat.label}
+                    </span>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          {/* About Section */}
+          <section id="about" className="scroll-mt-20 py-24">
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+              <div className="space-y-6">
+                <Badge variant="outline">About Me</Badge>
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                  A systems-minded builder who ships
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  I blend product thinking with full-stack execution—pairing
+                  Rust, TypeScript, and thoughtful UX to craft reliable,
+                  human-centered software.
+                </p>
+                <div className="space-y-4 text-muted-foreground">
+                  <p>
+                    I&apos;m Shreyansh Vishwakarma, a full-stack developer who
+                    thrives on turning real-time ideas into production-ready
+                    products. I love designing architectures that stay resilient
+                    under load.
+                  </p>
                 </div>
-              </article>
-            ))}
-          </div>
-        </section>
+              </div>
 
-        <section id="journey" className="scroll-mt-24">
-          <SectionHeading
-            eyebrow="Learning Journey"
-            title="Growing through experimentation and community"
-            description="A snapshot of what I&apos;m building, exploring, and aiming for next."
-          />
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {journeyColumns.map((column) => (
-              <article
-                key={column.title}
-                className="rounded-3xl border border-zinc-100 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900/60"
-              >
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">{column.title}</h3>
-                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  {column.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="mt-1 size-1.5 rounded-full bg-blue-500" aria-hidden />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  {
+                    icon: Globe,
+                    title: "Remote-first",
+                    desc: "Based in India, happy to sync across time zones",
+                  },
+                  {
+                    icon: Sparkles,
+                    title: "Hackathon Winner",
+                    desc: "Frontend storyteller with a love for motion design",
+                  },
+                  {
+                    icon: Code2,
+                    title: "Open Source",
+                    desc: "Actively contributing to tooling and real-time ecosystems",
+                  },
+                  {
+                    icon: Zap,
+                    title: "Performance",
+                    desc: "Optimizing with TypeScript, Rust, and WebAssembly",
+                  },
+                ].map((item) => (
+                  <Card key={item.title}>
+                    <CardContent className="p-5">
+                      <div className="mb-3 inline-flex rounded-lg bg-muted p-2.5">
+                        <item.icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-semibold">{item.title}</h3>
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        {item.desc}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
 
-        <section id="projects" className="scroll-mt-24">
-          <SectionHeading
-            eyebrow="Selected Work"
-            title="Projects that blend craft and impact"
-            description="Each built with intention, instrumentation, and a bias toward maintainability."
-          />
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {projects.map((project) => {
-              const showSecondaryCta = project.repo && project.repo !== project.link;
-              return (
-                <article
-                  key={project.title}
-                  className="group flex h-full flex-col justify-between rounded-3xl border border-zinc-100 bg-white/70 p-6 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900/60"
+          {/* Skills Section */}
+          <section id="skills" className="scroll-mt-20 py-24">
+            <div className="text-center">
+              <Badge variant="outline">Skills</Badge>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+                My Technical Toolkit
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+                TypeScript, Rust, and a modern web stack for building fast,
+                secure experiences.
+              </p>
+            </div>
+
+            <Tabs defaultValue="languages" className="mt-12">
+              <TabsList className="mx-auto grid w-full max-w-2xl grid-cols-4">
+                {skillCategories.map((category) => (
+                  <TabsTrigger
+                    key={category.id}
+                    value={category.id}
+                    className="gap-2"
+                  >
+                    <category.icon className="h-4 w-4" />
+                    <span className="hidden sm:inline">{category.label}</span>
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+
+              {skillCategories.map((category) => (
+                <TabsContent
+                  key={category.id}
+                  value={category.id}
+                  className="mt-8"
                 >
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">{project.title}</h3>
-                    <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                      {project.description}
-                    </p>
-                    <ul className="flex flex-wrap gap-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                      {project.stack.map((tech) => (
-                        <li
-                          key={tech}
-                          className="rounded-full border border-zinc-200 px-3 py-1 dark:border-zinc-700"
+                  <div className="mx-auto max-w-2xl space-y-6">
+                    {category.skills.map((skill) => (
+                      <div key={skill.name} className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="font-medium">{skill.name}</span>
+                          <span className="text-sm text-muted-foreground">
+                            {skill.level}%
+                          </span>
+                        </div>
+                        <div className="h-2 overflow-hidden rounded-full bg-muted">
+                          <div
+                            className="h-full rounded-full bg-primary"
+                            style={{ width: `${skill.level}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </TabsContent>
+              ))}
+            </Tabs>
+          </section>
+
+          {/* Projects Section */}
+          <section id="projects" className="scroll-mt-20 py-24">
+            <div className="text-center">
+              <Badge variant="outline">Projects</Badge>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+                Featured Work
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+                Each project built with intention, instrumentation, and a bias
+                toward maintainability.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
+              {projects.map((project) => {
+                const showSecondaryCta =
+                  project.repo && project.repo !== project.link;
+                return (
+                  <Card key={project.title} className="flex flex-col">
+                    <CardHeader>
+                      <div className="flex items-start justify-between">
+                        <div>
+                          {project.featured && (
+                            <Badge className="mb-2">
+                              <Sparkles className="mr-1 h-3 w-3" /> Featured
+                            </Badge>
+                          )}
+                          <CardTitle className="text-xl">
+                            {project.title}
+                          </CardTitle>
+                        </div>
+                      </div>
+                      <CardDescription className="text-sm leading-relaxed">
+                        {project.description}
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="flex-1">
+                      <div className="flex flex-wrap gap-2">
+                        {project.stack.map((tech) => (
+                          <Badge key={tech} variant="secondary">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+
+                    <CardFooter className="gap-3">
+                      <Button asChild size="sm" className="gap-2">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
-                          {tech}
+                          {showSecondaryCta ? "Live demo" : "View project"}
+                          <ArrowUpRight className="h-4 w-4" />
+                        </a>
+                      </Button>
+                      {showSecondaryCta && (
+                        <Button
+                          asChild
+                          variant="outline"
+                          size="sm"
+                          className="gap-2"
+                        >
+                          <a
+                            href={project.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Github className="h-4 w-4" />
+                            Code
+                          </a>
+                        </Button>
+                      )}
+                    </CardFooter>
+                  </Card>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Journey Section */}
+          <section id="journey" className="scroll-mt-20 py-24">
+            <div className="text-center">
+              <Badge variant="outline">Journey</Badge>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+                Growth Mindset
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+                A snapshot of what I&apos;m building, exploring, and aiming for
+                next.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {journeyItems.map((column) => (
+                <Card key={column.title}>
+                  <CardHeader>
+                    <div className="mb-2 inline-flex w-fit rounded-lg bg-muted p-3">
+                      <column.icon className="h-5 w-5" />
+                    </div>
+                    <CardTitle className="text-lg">{column.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      {column.items.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-3 text-sm text-muted-foreground"
+                        >
+                          <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
+                          {item}
                         </li>
                       ))}
                     </ul>
-                  </div>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-blue-200 px-4 py-2 text-sm font-semibold text-blue-600 transition hover:border-blue-400 hover:text-blue-500 dark:border-blue-900/60 dark:text-blue-400 dark:hover:border-blue-700 dark:hover:text-blue-300"
-                    >
-                      {showSecondaryCta ? "Live demo" : "View project"}
-                      <span aria-hidden>↗</span>
-                    </a>
-                    {showSecondaryCta ? (
-                      <a
-                        href={project.repo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:border-zinc-900 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-200 dark:hover:text-zinc-100"
-                      >
-                        View code
-                        <span aria-hidden>↗</span>
-                      </a>
-                    ) : null}
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </section>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
 
-        <section id="contact" className="scroll-mt-24">
-          <SectionHeading
-            eyebrow="Collaborate"
-            title="Let&apos;s build something ambitious"
-            description="Share what you&apos;re imagining—real-time platforms, performant frontends, or developer tooling—and I&apos;ll help bring it to life."
-          />
-          <div className="mt-10 rounded-3xl border border-zinc-100 bg-linear-to-r from-blue-600 via-indigo-500 to-purple-500 p-px shadow-lg dark:border-zinc-800">
-            <div className="rounded-[calc(1.5rem-1px)] bg-white p-10 dark:bg-zinc-950">
-              <div className="grid gap-8 md:grid-cols-[2fr_1fr] md:items-center">
-                <div className="space-y-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  <p>
-                    I love partnering with teams to ship bold ideas—whether it&apos;s a local-first chat app, a polished marketing experience, or a backend service that scales with confidence.
+          {/* Contact Section */}
+          <section id="contact" className="scroll-mt-20 py-24">
+            <Card>
+              <CardContent className="p-8 sm:p-12">
+                <div className="mx-auto max-w-3xl text-center">
+                  <Badge className="mb-6">Let&apos;s Collaborate</Badge>
+                  <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                    Ready to build something ambitious?
+                  </h2>
+                  <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+                    Share what you&apos;re imagining—real-time platforms,
+                    performant frontends, or developer tooling—and I&apos;ll
+                    help bring it to life.
                   </p>
-                  <p className="font-semibold text-zinc-800 dark:text-zinc-100">
-                    Send over a quick brief and I&apos;ll reply within two business days.
+
+                  <div className="mt-10 flex flex-wrap justify-center gap-4">
+                    {contactLinks.map((link) => (
+                      <Tooltip key={link.label}>
+                        <TooltipTrigger asChild>
+                          <Button
+                            asChild
+                            variant="outline"
+                            size="lg"
+                            className="gap-2"
+                          >
+                            <a
+                              href={link.href}
+                              target={
+                                link.href.startsWith("http")
+                                  ? "_blank"
+                                  : undefined
+                              }
+                              rel={
+                                link.href.startsWith("http")
+                                  ? "noopener noreferrer"
+                                  : undefined
+                              }
+                            >
+                              <link.icon className="h-5 w-5" />
+                              {link.label}
+                            </a>
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          Contact via {link.label}
+                        </TooltipContent>
+                      </Tooltip>
+                    ))}
+                  </div>
+
+                  <p className="mt-8 text-sm text-muted-foreground">
+                    Usually respond within 2 business days
                   </p>
                 </div>
-                <div className="space-y-3 text-sm font-medium text-zinc-700 dark:text-zinc-200">
-                  {contactLinks.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target={link.href.startsWith("http") ? "_blank" : undefined}
-                      rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="flex items-center justify-between rounded-2xl border border-zinc-200 px-4 py-3 transition hover:-translate-y-0.5 hover:border-zinc-900 hover:bg-zinc-900 hover:text-white dark:border-zinc-800 dark:hover:border-zinc-200 dark:hover:bg-zinc-100 dark:hover:text-zinc-900"
-                    >
-                      {link.label}
-                      <span aria-hidden>↗</span>
-                    </a>
-                  ))}
-                </div>
+              </CardContent>
+            </Card>
+          </section>
+        </main>
+
+        {/* Footer */}
+        <footer className="border-t">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 py-10 sm:flex-row sm:px-6">
+            <div className="flex items-center gap-3">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">
+                S
+              </div>
+              <div>
+                <p className="text-sm font-medium">Shreyansh Vishwakarma</p>
+                <p className="text-xs text-muted-foreground">
+                  © {new Date().getFullYear()} All rights reserved
+                </p>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
 
-      <footer className="border-t border-zinc-100 bg-white/80 py-10 text-sm text-zinc-500 backdrop-blur dark:border-zinc-900 dark:bg-black/50 dark:text-zinc-400">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
-          <p>© {new Date().getFullYear()} Shreyansh Vishwakarma. Built with care in Next.js.</p>
-          <div className="flex gap-4">
-            {contactLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="transition hover:text-zinc-800 dark:hover:text-zinc-200"
-              >
-                {link.label}
-              </a>
-            ))}
+            <Separator orientation="vertical" className="hidden h-8 sm:block" />
+
+            <div className="flex gap-2">
+              {contactLinks.map((link) => (
+                <Tooltip key={link.label}>
+                  <TooltipTrigger asChild>
+                    <Button asChild variant="ghost" size="icon">
+                      <a
+                        href={link.href}
+                        target={
+                          link.href.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel={
+                          link.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                      >
+                        <link.icon className="h-4 w-4" />
+                        <span className="sr-only">{link.label}</span>
+                      </a>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>{link.label}</TooltipContent>
+                </Tooltip>
+              ))}
+            </div>
           </div>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </TooltipProvider>
   );
 }
