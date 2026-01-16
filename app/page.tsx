@@ -1,5 +1,6 @@
 "use client";
 
+import Magnet from "@/components/Magnet";
 import AnimatedContent from "@/components/AnimatedContent";
 import GlareHover from "@/components/GlareHover";
 import Link from "next/link";
@@ -276,7 +277,7 @@ export default function Home() {
               fast, secure, and delightful to use.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-10 flex flex-col gap-17 sm:flex-row">
               <ElectricBorder
                 className="lskdfj"
                 color="#7df9ff"
@@ -299,23 +300,13 @@ export default function Home() {
                 </Button>
               </ElectricBorder>
 
-              <div className="h-1">
-                <GlareHover
-                  width="165px"
-                  height="42px"
-                  className="h-1"
-                  glareColor="#ffffff"
-                  glareOpacity={0.3}
-                  glareAngle={-30}
-                  glareSize={300}
-                  transitionDuration={800}
-                  playOnce={false}
-                >
-                  <Button asChild variant="ghost" size="lg">
+              <Magnet padding={50} disabled={false} magnetStrength={1}>
+                <div className="h-1">
+                  <Button asChild variant="outline" size="lg">
                     <a href="/resume.pdf">Download résumé</a>
                   </Button>
-                </GlareHover>
-              </div>
+                </div>
+              </Magnet>
             </div>
           </section>
 
