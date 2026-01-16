@@ -1,5 +1,6 @@
 "use client";
 
+import AnimatedContent from "@/components/AnimatedContent";
 import GlareHover from "@/components/GlareHover";
 import Link from "next/link";
 import { useState } from "react";
@@ -194,6 +195,7 @@ const contactLinks = [
 
 export default function Home() {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [canAnimateCard, setCanAnimatedCard] = useState(false);
   return (
     <TooltipProvider>
       <div className="min-h-screen bg-background">
@@ -317,25 +319,36 @@ export default function Home() {
           {/* About Section */}
           <section id="about" className="scroll-mt-20 py-24">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-              <div className="space-y-6">
-                <Badge variant="outline">About Me</Badge>
-                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                  A systems-minded builder who ships
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  I blend product thinking with full-stack execution—pairing
-                  Rust, TypeScript, and thoughtful UX to craft reliable,
-                  human-centered software.
-                </p>
-                <div className="space-y-4 text-muted-foreground">
-                  <p>
-                    I&apos;m Shreyansh Vishwakarma, a full-stack developer who
-                    thrives on turning real-time ideas into production-ready
-                    products. I love designing architectures that stay resilient
-                    under load.
+              <AnimatedContent
+                distance={150}
+                direction="horizontal"
+                reverse={true}
+                config={{ tension: 80, friction: 20 }}
+                initialOpacity={0}
+                animateOpacity
+                scale={1.1}
+                threshold={0.8}
+              >
+                <div className="space-y-6">
+                  <Badge variant="outline">About Me</Badge>
+                  <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                    A systems-minded builder who ships
+                  </h2>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    I blend product thinking with full-stack execution—pairing
+                    Rust, TypeScript, and thoughtful UX to craft reliable,
+                    human-centered software.
                   </p>
+                  <div className="space-y-4 text-muted-foreground">
+                    <p>
+                      I&apos;m Shreyansh Vishwakarma, a full-stack developer who
+                      thrives on turning real-time ideas into production-ready
+                      products. I love designing architectures that stay
+                      resilient under load.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </AnimatedContent>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 {[
@@ -343,34 +356,49 @@ export default function Home() {
                     icon: Globe,
                     title: "Remote-first",
                     desc: "Based in India, happy to sync across time zones",
+                    animationReverse: true,
                   },
                   {
                     icon: Sparkles,
                     title: "Hackathon Winner",
                     desc: "Frontend storyteller with a love for motion design",
+                    animationReverse: true,
                   },
                   {
                     icon: Code2,
                     title: "Open Source",
                     desc: "Actively contributing to tooling and real-time ecosystems",
+                    animationReverse: false,
                   },
                   {
                     icon: Zap,
                     title: "Performance",
                     desc: "Optimizing with TypeScript, Rust, and WebAssembly",
+                    animationReverse: false,
                   },
                 ].map((item) => (
-                  <Card key={item.title}>
-                    <CardContent className="p-5">
-                      <div className="mb-3 inline-flex rounded-lg bg-muted p-2.5">
-                        <item.icon className="h-5 w-5" />
-                      </div>
-                      <h3 className="font-semibold">{item.title}</h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {item.desc}
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <AnimatedContent
+                    distance={150}
+                    direction="vertical"
+                    reverse={item.animationReverse}
+                    config={{ tension: 80, friction: 20 }}
+                    initialOpacity={0}
+                    animateOpacity
+                    scale={1.1}
+                    threshold={0}
+                  >
+                    <Card key={item.title}>
+                      <CardContent className="p-5">
+                        <div className="mb-3 inline-flex rounded-lg bg-muted p-2.5">
+                          <item.icon className="h-5 w-5" />
+                        </div>
+                        <h3 className="font-semibold">{item.title}</h3>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          {item.desc}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </AnimatedContent>
                 ))}
               </div>
             </div>
