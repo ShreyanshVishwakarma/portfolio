@@ -3,7 +3,7 @@
 import AnimatedContent from "@/components/AnimatedContent";
 import GlareHover from "@/components/GlareHover";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import ElectricBorder from "@/components/ElectricBorder";
 import FuzzyText from "@/components/FuzzyText";
 import { Button } from "@/components/ui/button";
@@ -196,6 +196,9 @@ const contactLinks = [
 export default function Home() {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
   const [canAnimateCard, setCanAnimatedCard] = useState(false);
+  const handleAnimationComplete = useCallback(() => {
+    setCanAnimatedCard(true);
+  }, []); // Empty dependency array means this function never changes
   return (
     <TooltipProvider>
       <div className="min-h-screen bg-background">
@@ -327,7 +330,8 @@ export default function Home() {
                 initialOpacity={0}
                 animateOpacity
                 scale={1.1}
-                threshold={0.8}
+                threshold={0.5}
+                onComplete={handleAnimationComplete}
               >
                 <div className="space-y-6">
                   <Badge variant="outline">About Me</Badge>
@@ -378,16 +382,19 @@ export default function Home() {
                   },
                 ].map((item) => (
                   <AnimatedContent
+                    key={item.title}
                     distance={150}
+                    trigger={canAnimateCard}
                     direction="vertical"
+                    duration={0.5}
                     reverse={item.animationReverse}
                     config={{ tension: 80, friction: 20 }}
                     initialOpacity={0}
                     animateOpacity
                     scale={1.1}
-                    threshold={0}
+                    threshold={0.1}
                   >
-                    <Card key={item.title}>
+                    <Card className={canAnimateCard ? "" : "opacity-0"}>
                       <CardContent className="p-5">
                         <div className="mb-3 inline-flex rounded-lg bg-muted p-2.5">
                           <item.icon className="h-5 w-5" />
