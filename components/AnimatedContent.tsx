@@ -1,10 +1,31 @@
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const AnimatedContent = ({
+interface AnimatedContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  container?: Element | string | null;
+  distance?: number;
+  direction?: "vertical" | "horizontal";
+  reverse?: boolean;
+  duration?: number;
+  ease?: string;
+  initialOpacity?: number;
+  animateOpacity?: boolean;
+  scale?: number;
+  threshold?: number;
+  delay?: number;
+  disappearAfter?: number;
+  disappearDuration?: number;
+  disappearEase?: string;
+  trigger?: boolean;
+  onComplete?: () => void;
+  onDisappearanceComplete?: () => void;
+}
+
+const AnimatedContent: React.FC<AnimatedContentProps> = ({
   children,
   container,
   distance = 100,
@@ -26,16 +47,16 @@ const AnimatedContent = ({
   className = "",
   ...props
 }) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    // 2. Add this guard clause at the very top of your GSAP/Effect hook
+    // Guard clause to prevent animation if trigger is false
     if (!trigger) return;
 
-    let scrollerTarget =
+    let scrollerTarget: Element | string | null =
       container || document.getElementById("snap-main-container") || null;
 
     if (typeof scrollerTarget === "string") {

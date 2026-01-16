@@ -2,7 +2,7 @@
 
 import Magnet from "@/components/Magnet";
 import AnimatedContent from "@/components/AnimatedContent";
-import GlareHover from "@/components/GlareHover";
+
 import Link from "next/link";
 import { useState, useCallback } from "react";
 import ElectricBorder from "@/components/ElectricBorder";
@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -317,7 +317,6 @@ export default function Home() {
                 distance={150}
                 direction="horizontal"
                 reverse={true}
-                config={{ tension: 80, friction: 20 }}
                 initialOpacity={0}
                 animateOpacity
                 scale={1.1}
@@ -379,7 +378,6 @@ export default function Home() {
                     direction="vertical"
                     duration={0.5}
                     reverse={item.animationReverse}
-                    config={{ tension: 80, friction: 20 }}
                     initialOpacity={0}
                     animateOpacity
                     scale={1.1}
