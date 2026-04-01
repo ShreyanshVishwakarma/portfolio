@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 const siteTitle = "Shreyansh Vishwakarma — Full-Stack Developer";
 const siteDescription =
-  "Full-stack developer building real-time TypeScript and Rust experiences with a focus on performance, security, and developer experience.";
+  "Building high-performance systems with Rust and real-time experiences with TypeScript.";
 
 export const metadata: Metadata = {
   title: {

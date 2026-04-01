@@ -7,7 +7,6 @@ import ElectricBorder from "@/components/ElectricBorder";
 import FuzzyText from "@/components/FuzzyText";
 import TextPressure from "@/components/TextPressure";
 import Magnet from "@/components/Magnet";
-import Ribbons from "@/components/Ribbons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -235,19 +234,8 @@ export default function Home() {
           {/* ──────────────────── Hero ──────────────────── */}
           <section
             id="home"
-            className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+            className="relative min-h-screen flex flex-col items-center justify-center "
           >
-            {/* Ribbons Background */}
-            <div className="absolute inset-0 z-0 opacity-15 dark:opacity-25">
-              <Ribbons
-                colors={["#3b82f6", "#8b5cf6", "#06b6d4"]}
-                baseThickness={20}
-                speedMultiplier={0.4}
-                maxAge={500}
-                pointCount={40}
-              />
-            </div>
-
             {/* Hero Content */}
             <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6">
 
@@ -311,19 +299,13 @@ export default function Home() {
 
                 <Magnet padding={50} disabled={false} magnetStrength={1}>
                   <Button asChild variant="outline" size="lg">
-                    <a href="/resume.pdf">Download résumé</a>
+                    <a href="/resume">Download résumé</a>
                   </Button>
                 </Magnet>
               </div>
             </div>
 
-            {/* Scroll Indicator */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-hint">
-              <span className="text-xs text-muted-foreground tracking-widest uppercase">
-                Scroll
-              </span>
-              <div className="w-px h-8 bg-linear-to-b from-foreground/40 to-transparent" />
-            </div>
+
           </section>
 
           {/* ──────────────────── Bento Overview Grid ──────────────────── */}
@@ -845,9 +827,6 @@ export default function Home() {
         <footer className="border-t border-foreground/5 py-8">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="h-7 w-7 rounded-lg bg-linear-to-br from-blue-500 to-violet-600 flex items-center justify-center text-white text-xs font-bold shrink-0">
-                S
-              </div>
               <div>
                 <p className="text-sm font-medium">Shreyansh Vishwakarma</p>
                 <p className="text-xs text-muted-foreground">
