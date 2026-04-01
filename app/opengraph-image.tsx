@@ -68,7 +68,7 @@ export default async function Image() {
               lineHeight: 1.5,
             }}
           >
-            Building high-performance systems with Rust and real-time experiences with TypeScript.
+            I am a full-stack developer specializing in building high-performance backend systems with Rust and scalable, real-time web applications using TypeScript.
           </p>
         </div>
       </div>
