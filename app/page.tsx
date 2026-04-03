@@ -40,7 +40,7 @@ const workProjects = [
     stack: ["Solidity", "Ethereum", "Next.js", "Blockchain"],
     repo: "https://github.com/ShreyanshVishwakarma/LandTrust",
     gradient: "from-emerald-500/10 to-cyan-500/10",
-    featured: true,
+    featured: false,
     badge: "🏆 Grand Finalist @ UDBHAV",
   },
   {
@@ -49,8 +49,9 @@ const workProjects = [
       "Jeopardy-style cybersecurity competition platform with real-time leaderboard, flag validation, and complete challenge infrastructure for a national-level event.",
     stack: ["Next.js", "Convex", "React", "TypeScript"],
     repo: "https://github.com/ShreyanshVishwakarma/ctf-platform",
+    link: "https://ctf-seven-kappa.vercel.app/",
     gradient: "from-violet-500/10 to-purple-500/10",
-    featured: false,
+    featured: true,
   },
   {
     title: "JustChatting",
@@ -221,6 +222,8 @@ const contactLinks = [
 
 export default function Home() {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const featuredWorkProject =
+    workProjects.find((project) => project.featured) ?? workProjects[0];
 
   return (
     <TooltipProvider>
@@ -478,7 +481,7 @@ export default function Home() {
               </div>
             </AnimatedContent>
 
-            {/* Featured: LandTrust */}
+            {/* Featured Work Project */}
             <AnimatedContent
               distance={40}
               direction="vertical"
@@ -486,39 +489,55 @@ export default function Home() {
               animateOpacity
               threshold={0.1}
             >
-              <a
-                href={workProjects[0].repo}
-                target="_blank"
-                rel="noopener noreferrer"
+              <div
                 className="block glass rounded-2xl p-6 md:p-8 mb-6 group transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/5"
               >
                 <div className="absolute inset-0 bg-linear-to-r from-emerald-500/5 via-transparent to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10">
                   <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <Badge className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20">
-                      🏆 Grand Finalist @ UDBHAV
-                    </Badge>
+                    {featuredWorkProject.badge && (
+                      <Badge className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20">
+                        {featuredWorkProject.badge}
+                      </Badge>
+                    )}
                     <Badge variant="secondary">Featured</Badge>
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">
-                    LandTrust
+                    {featuredWorkProject.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4 max-w-2xl">
-                    {workProjects[0].description}
+                    {featuredWorkProject.description}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-5">
-                    {workProjects[0].stack.map((t) => (
+                    {featuredWorkProject.stack.map((t) => (
                       <Badge key={t} variant="secondary" className="bg-foreground/5">
                         {t}
                       </Badge>
                     ))}
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600 dark:text-emerald-400 group-hover:underline">
-                    <Github className="h-4 w-4" /> Source Code{" "}
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </span>
+                  <div className="flex items-center gap-4">
+                    {featuredWorkProject.link && (
+                      <a
+                        href={featuredWorkProject.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium hover:underline"
+                      >
+                        Live Demo <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    <a
+                      href={featuredWorkProject.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-emerald-600 dark:text-emerald-400 group-hover:underline"
+                    >
+                      <Github className="h-4 w-4" /> Source Code{" "}
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
             </AnimatedContent>
 
             {/* Other Work Projects Grid */}
