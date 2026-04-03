@@ -7,6 +7,7 @@ import ElectricBorder from "@/components/ElectricBorder";
 import FuzzyText from "@/components/FuzzyText";
 import TextPressure from "@/components/TextPressure";
 import Magnet from "@/components/Magnet";
+import BorderGlow from "@/components/BorderGlow";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -335,7 +336,13 @@ export default function Home() {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {/* ── Featured Project: LandTrust ── */}
-                <div className="md:col-span-2 lg:row-span-2 glass rounded-2xl p-6 md:p-8 group cursor-default transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/5">
+                <BorderGlow
+                  className="md:col-span-2 lg:row-span-2 glass rounded-2xl p-6 md:p-8 group cursor-default transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/5"
+                  glowRadius={32}
+                  borderRadius={20}
+                  edgeSensitivity={34}
+                  fillOpacity={0.35}
+                >
                   <div className="absolute inset-0 bg-linear-to-br from-emerald-500/8 via-transparent to-cyan-500/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative z-10 h-full flex flex-col">
                     <Badge className="w-fit mb-4 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/15">
@@ -372,7 +379,7 @@ export default function Home() {
                       <ArrowUpRight className="h-3.5 w-3.5" />
                     </a>
                   </div>
-                </div>
+                </BorderGlow>
 
                 {/* ── Current Status ── */}
                 <div className="glass rounded-2xl p-6 group transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
@@ -499,8 +506,12 @@ export default function Home() {
               animateOpacity
               threshold={0.1}
             >
-              <div
+              <BorderGlow
                 className="block glass rounded-2xl p-6 md:p-8 mb-6 group transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/5"
+                glowRadius={34}
+                borderRadius={20}
+                edgeSensitivity={32}
+                fillOpacity={0.3}
               >
                 <div className="absolute inset-0 bg-linear-to-r from-emerald-500/5 via-transparent to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10">
@@ -547,7 +558,7 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-              </div>
+              </BorderGlow>
             </AnimatedContent>
 
             {/* Other Work Projects Grid */}
@@ -798,9 +809,15 @@ export default function Home() {
               animateOpacity
               threshold={0.1}
             >
-              <div className="glass rounded-2xl p-8 md:p-16 text-center">
+              <BorderGlow
+                className="glass rounded-2xl p-8 md:p-16 text-center"
+                glowRadius={36}
+                borderRadius={20}
+                edgeSensitivity={30}
+                fillOpacity={0.3}
+              >
                 <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-violet-500/5 rounded-2xl" />
-                <div className="relative z-10">
+                <div className="relative p-10 z-10">
                   <Badge variant="secondary" className="mb-6 backdrop-blur-sm">
                     Let&apos;s Collaborate
                   </Badge>
@@ -847,7 +864,7 @@ export default function Home() {
                     Usually respond within 2 business days
                   </p>
                 </div>
-              </div>
+              </BorderGlow>
             </AnimatedContent>
           </section>
         </main>
