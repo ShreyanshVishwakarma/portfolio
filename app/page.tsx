@@ -245,7 +245,13 @@ export default function Home() {
               {/* Name */}
               <div className="w-full text-left overflow-visible">
                 <div className="mb-4 text-muted-foreground pl-6 font-light text-4xl sm:text-5xl md:text-6xl">
-                  <FuzzyText baseIntensity={0.2}>Hi, I&apos;m</FuzzyText>
+                  <FuzzyText
+                    color="currentColor"
+                    className="text-slate-700 dark:text-slate-200"
+                    baseIntensity={0.2}
+                  >
+                    Hi, I&apos;m
+                  </FuzzyText>
                 </div>
                 <div className="w-full relative">
                   <TextPressure
@@ -254,6 +260,8 @@ export default function Home() {
                     flex={true}
                     italic={true}
                     width={true}
+                    textColor="currentColor"
+                    className="text-slate-900 dark:text-white"
                     strokeColor="#3ceaea"
                   />
                 </div>
@@ -263,6 +271,8 @@ export default function Home() {
                   flex={true}
                   italic={true}
                   width={true}
+                  textColor="currentColor"
+                  className="text-slate-900 dark:text-white"
                   strokeColor="#3ceaea"
                 />
               </div>

@@ -37,10 +37,16 @@ const FuzzyText = ({
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
 
+      const computedStyles = window.getComputedStyle(canvas);
+
       const computedFontFamily =
         fontFamily === "inherit"
-          ? window.getComputedStyle(canvas).fontFamily || "sans-serif"
+          ? computedStyles.fontFamily || "sans-serif"
           : fontFamily;
+      const resolvedColor =
+        color === "currentColor"
+          ? computedStyles.color
+          : (color ?? computedStyles.color ?? "#0f172a");
 
       const fontSizeStr =
         typeof fontSize === "number" ? `${fontSize}px` : fontSize;
@@ -116,7 +122,7 @@ const FuzzyText = ({
         );
         offCtx.fillStyle = grad;
       } else {
-        offCtx.fillStyle = color;
+        offCtx.fillStyle = resolvedColor;
       }
 
       if (letterSpacing !== 0) {
