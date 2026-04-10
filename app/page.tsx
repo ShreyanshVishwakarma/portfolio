@@ -294,7 +294,7 @@ export default function Home() {
                   className=""
                   color="#7df9ff"
                   speed={isButtonHovered ? 3 : 1}
-                  chaos={isButtonHovered ? 0.2 : 0.1}
+                  chaos={isButtonHovered ? 0.1 : 0.06}
                   style={{ borderRadius: 16 }}
                 >
                   <Button
