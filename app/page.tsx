@@ -152,14 +152,14 @@ const timelineEvents = [
     current: true,
   },
   {
-    year: "2025",
+    year: "2026",
     title: "National CTF Event Organizer",
     description:
       "Built complete Jeopardy-style CTF platform and organized national cybersecurity competition with participants across India",
     color: "#8b5cf6",
   },
   {
-    year: "2024",
+    year: "2026",
     title: "UDBHAV Grand Finalist",
     description:
       "Led team through 3 rounds — intra-college → inter-IIIT → national finals across 21 IIITs with LandTrust blockchain project",
@@ -187,7 +187,7 @@ const timelineEvents = [
     color: "#f59e0b",
   },
   {
-    year: "2022",
+    year: "2023",
     title: "Started B.Tech at IIIT Surat",
     description:
       "Began Computer Science and Engineering, diving into full-stack development and systems programming",
@@ -713,7 +713,7 @@ export default function Home() {
           {/* ──────────────────── Timeline ──────────────────── */}
           <section
             id="timeline"
-            className="scroll-mt-20 py-24 mx-auto max-w-6xl px-4 sm:px-6"
+            className="scroll-mt-20 py-24 mx-auto max-w-6xl px-4 sm:px-6 relative"
           >
             <AnimatedContent
               distance={60}
@@ -735,64 +735,82 @@ export default function Home() {
               </div>
             </AnimatedContent>
 
-            <div className="relative max-w-2xl mx-auto">
-              {/* Vertical Line */}
-              <div className="timeline-line" />
-
-              <div className="space-y-6">
-                {timelineEvents.map((event, i) => (
-                  <AnimatedContent
-                    key={i}
-                    distance={30}
-                    direction="horizontal"
-                    reverse={false}
-                    initialOpacity={0}
-                    animateOpacity
-                    threshold={0.2}
-                    delay={i * 0.08}
-                  >
-                    <div className="relative pl-12">
-                      {/* Dot */}
-                      <div
-                        className="absolute left-1.75 top-5 w-4.5 h-4.5 rounded-full border-2 bg-background z-10"
-                        style={{ borderColor: event.color }}
-                      >
-                        {event.current ? (
-                          <div
-                            className="absolute inset-0.75 rounded-full glow-dot"
-                            style={{
-                              background: event.color,
-                              color: event.color,
-                            }}
-                          />
-                        ) : (
-                          <div
-                            className="absolute inset-1 rounded-full"
-                            style={{ background: event.color }}
-                          />
+            <div className="relative max-w-3xl mx-auto">
+              <div className="space-y-8 sm:space-y-12 z-10 relative">
+                {timelineEvents.map((event, i) => {
+                  const isEven = i % 2 === 0;
+                  return (
+                    <AnimatedContent
+                      key={i}
+                      distance={40}
+                      direction="vertical"
+                      reverse={false}
+                      initialOpacity={0}
+                      animateOpacity
+                      threshold={0.1}
+                      delay={i * 0.1}
+                    >
+                      <div className="relative flex flex-col sm:flex-row items-start gap-6 sm:gap-0">
+                        {/* Connecting Curvy Line to next item */}
+                        {i < timelineEvents.length - 1 && (
+                          <div className="absolute left-[28px] sm:left-1/2 top-8 w-[60px] -translate-x-1/2 z-0 h-[calc(100%+2rem)] sm:h-[calc(100%+3rem)] text-blue-500/30">
+                            {/* Mobile: straight line */}
+                            <svg fill="none" viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full sm:hidden">
+                              <path d="M 50 0 L 50 100" stroke="currentColor" strokeWidth="2.5" strokeDasharray="6 6" vectorEffect="non-scaling-stroke" />
+                            </svg>
+                            {/* Desktop: alternating curve */}
+                            <svg fill="none" viewBox="0 0 100 100" preserveAspectRatio="none" className="hidden sm:block w-full h-full">
+                              <path d={isEven ? "M 50 0 C 50 20, 90 20, 90 50 C 90 80, 50 80, 50 100" : "M 50 0 C 50 20, 10 20, 10 50 C 10 80, 50 80, 50 100"} stroke="currentColor" strokeWidth="2.5" strokeDasharray="6 6" vectorEffect="non-scaling-stroke" />
+                            </svg>
+                          </div>
                         )}
-                      </div>
 
-                      {/* Card */}
-                      <div className="glass rounded-xl p-5 transition-all duration-300 hover:shadow-md">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-xs font-bold text-muted-foreground bg-foreground/5 px-2 py-0.5 rounded">
-                            {event.year}
-                          </span>
-                          {event.current && (
-                            <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                              Current
-                            </span>
-                          )}
+                        {/* Dot */}
+                        <div className="absolute left-[28px] sm:left-1/2 top-8 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-20">
+                          <div
+                            className="w-4 h-4 rounded-full border-[3px] bg-background shadow-sm shadow-blue-500/20"
+                            style={{ borderColor: event.color }}
+                          >
+                            {event.current && (
+                              <div
+                                className="absolute inset-0 m-0.5 rounded-full animate-pulse"
+                                style={{ background: event.color }}
+                              />
+                            )}
+                          </div>
                         </div>
-                        <h3 className="text-base font-bold">{event.title}</h3>
-                        <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">
-                          {event.description}
-                        </p>
+
+                        {/* Content Card */}
+                        <div
+                          className={`w-full sm:w-[calc(50%-2rem)] pl-14 sm:pl-0 ${
+                            isEven
+                              ? "sm:pr-10 sm:text-left sm:ml-0"
+                              : "sm:pl-10 sm:ml-auto"
+                          }`}
+                        >
+                          <div
+                            className={`glass rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5 flex flex-col items-start`}
+                          >
+                            <div className="flex items-center gap-3 mb-2 flex-row">
+                              <span className="text-xs font-bold text-foreground bg-foreground/5 px-2.5 py-1 rounded-md backdrop-blur-md border border-foreground/10" style={{ color: event.color }}>
+                                {event.year}
+                              </span>
+                              {event.current && (
+                                <Badge variant="outline" className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 text-[10px] uppercase tracking-wider">
+                                  Current
+                                </Badge>
+                              )}
+                            </div>
+                            <h3 className="text-lg font-bold tracking-tight mb-1">{event.title}</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                              {event.description}
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </AnimatedContent>
-                ))}
+                    </AnimatedContent>
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -800,8 +818,11 @@ export default function Home() {
           {/* ──────────────────── Contact ──────────────────── */}
           <section
             id="contact"
-            className="scroll-mt-20 py-24 mx-auto max-w-6xl px-4 sm:px-6"
+            className="relative scroll-mt-20 py-24 mx-auto max-w-6xl px-4 sm:px-6"
           >
+            {/* Background elements */}
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-background to-background" />
+
             <AnimatedContent
               distance={60}
               direction="vertical"
@@ -809,101 +830,85 @@ export default function Home() {
               animateOpacity
               threshold={0.1}
             >
-              <BorderGlow
-                className="glass rounded-2xl p-8 md:p-16 text-center"
-                glowRadius={36}
-                borderRadius={20}
-                edgeSensitivity={30}
-                fillOpacity={0.3}
-              >
-                <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-violet-500/5 rounded-2xl" />
-                <div className="relative p-10 z-10">
-                  <Badge variant="secondary" className="mb-6 backdrop-blur-sm">
-                    Let&apos;s Collaborate
-                  </Badge>
-                  <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                    Ready to build something{" "}
-                    <span className="gradient-text">ambitious</span>?
-                  </h2>
-                  <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-                    Whether it&apos;s real-time platforms, blockchain systems, or
-                    performant frontends — let&apos;s turn your vision into
-                    production-ready software.
-                  </p>
-
-                  <div className="mt-10 flex flex-wrap justify-center gap-3">
-                    {contactLinks.map((link) => (
-                      <Tooltip key={link.label}>
-                        <TooltipTrigger asChild>
-                          <a
-                            href={link.href}
-                            target={
-                              link.href.startsWith("http")
-                                ? "_blank"
-                                : undefined
-                            }
-                            rel={
-                              link.href.startsWith("http")
-                                ? "noopener noreferrer"
-                                : undefined
-                            }
-                            className="glass rounded-xl px-5 py-3 flex items-center gap-2.5 text-sm font-medium hover:scale-105 transition-transform"
-                          >
-                            <link.icon className="h-4 w-4" />
-                            {link.label}
-                          </a>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          Contact via {link.label}
-                        </TooltipContent>
-                      </Tooltip>
-                    ))}
+              <div className="glass rounded-3xl p-8 md:p-16 relative overflow-hidden border border-white/10 dark:border-white/5 shadow-2xl">
+                <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-blue-500/10 blur-[80px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-violet-500/10 blur-[80px] pointer-events-none" />
+                
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                  <div className="text-center lg:text-left">
+                    <Badge variant="outline" className="mb-6 backdrop-blur-sm bg-background/50 border-blue-500/20 text-blue-500">
+                      Let&apos;s Collaborate
+                    </Badge>
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+                      Ready to build something <br className="hidden lg:block"/>
+                      <span className="gradient-text italic pr-2">ambitious</span>?
+                    </h2>
+                    <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
+                      Whether it&apos;s real-time platforms, blockchain systems, or performant frontends — let&apos;s turn your vision into production-ready software.
+                    </p>
                   </div>
 
-                  <p className="mt-8 text-xs text-muted-foreground">
-                    Usually respond within 2 business days
-                  </p>
+                  <div className="flex flex-col gap-4 max-w-md mx-auto w-full">
+                    {contactLinks.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target={link.href.startsWith("http") ? "_blank" : undefined}
+                        rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="group flex items-center justify-between p-4 rounded-xl border bg-background/40 hover:bg-background/80 hover:border-blue-500/30 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="h-10 w-10 text-muted-foreground group-hover:text-blue-500 rounded-full bg-foreground/5 shadow-sm flex items-center justify-center transition-colors">
+                            <link.icon className="h-5 w-5" />
+                          </div>
+                          <span className="font-semibold text-foreground/80 group-hover:text-foreground transition-colors">
+                            {link.label}
+                          </span>
+                        </div>
+                        <ArrowUpRight className="h-5 w-5 text-muted-foreground/50 group-hover:text-blue-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </BorderGlow>
+              </div>
             </AnimatedContent>
           </section>
         </main>
 
         {/* ──────────────────── Footer ──────────────────── */}
-        <footer className="border-t border-foreground/5 py-8">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div>
-                <p className="text-sm font-medium">Shreyansh Vishwakarma</p>
-                <p className="text-xs text-muted-foreground">
-                  © {new Date().getFullYear()} All rights reserved
+        <footer className="relative border-t border-foreground/10 bg-background/50 backdrop-blur-lg overflow-hidden py-12 mt-12">
+          {/* Subtle gradient glow at the bottom */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-linear-to-t from-blue-500/10 to-transparent blur-2xl pointer-events-none" />
+          
+          <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex flex-col items-center md:items-start">
+                <span className="text-lg font-bold tracking-tight mb-1">Shreyansh Vishwakarma</span>
+                <p className="text-sm text-muted-foreground flex items-center gap-2">
+                  Building with intent <span className="w-1 h-1 rounded-full bg-muted-foreground/50"></span> {new Date().getFullYear()}
                 </p>
               </div>
-            </div>
 
-            <div className="flex gap-1">
-              {contactLinks.map((link) => (
-                <Tooltip key={link.label}>
-                  <TooltipTrigger asChild>
-                    <a
-                      href={link.href}
-                      target={
-                        link.href.startsWith("http") ? "_blank" : undefined
-                      }
-                      rel={
-                        link.href.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-foreground/5"
-                    >
-                      <link.icon className="h-4 w-4" />
-                      <span className="sr-only">{link.label}</span>
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent>{link.label}</TooltipContent>
-                </Tooltip>
-              ))}
+              <div className="flex items-center gap-4">
+                {contactLinks.map((link) => (
+                  <Tooltip key={link.label}>
+                    <TooltipTrigger asChild>
+                      <a
+                        href={link.href}
+                        target={link.href.startsWith("http") ? "_blank" : undefined}
+                        rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="group p-2.5 rounded-full hover:bg-foreground/5 transition-all duration-300 transform hover:scale-110"
+                      >
+                        <link.icon className="h-5 w-5 text-muted-foreground group-hover:text-blue-500 transition-colors" />
+                        <span className="sr-only">{link.label}</span>
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent side="top" className="text-xs bg-background/90 backdrop-blur border text-foreground">
+                      {link.label}
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+              </div>
             </div>
           </div>
         </footer>
