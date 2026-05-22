@@ -1,0 +1,176 @@
+---
+title: Linked Lists in JavaScript and Rust
+date: 2026-05-22
+description: Summer break is weird. One minute you're dying over finals, and the next you're grinding DSA. Let's talk about building Linked Lists in JS and the absolute headache that is Rust.
+author: Shreyansh Vishwakarma
+---
+
+Exams? Done. Finally. 
+
+You'd think I'd be sleeping till noon right now, considering summer break officially kicked off about five minutes ago. But honestly, the sheer panic of the upcoming placement season is already breathing down my neck. So, instead of touching grass or, I don't know, acting like a normal student on vacation, I’m locking myself in with Data Structures and Algorithms. Welcome to the grind.
+
+Look, most college roadmaps force you into C++ or Java for this stuff. Which is fine, I guess. But I wanted to see what happens when you take a bare-bones, classic structure like the Linked List and build it in two completely opposite ends of the modern web spectrum: JavaScript (super loose, does whatever it wants) and Rust (will literally physically fight you over a memory address).
+
+Let's just get into it.
+
+---
+
+## 🚀 The JS Way: Fast and Loose
+
+JavaScript is... ridiculously forgiving. Seriously. You don’t manage memory. Raw pointers? Never heard of 'em. So throwing together nodes in JS feels a lot less algorithmic and a lot more like just randomly stacking Lego blocks.
+
+### 1. Wait, what even is a Linked List?
+
+At its core, it's just a weird, fragmented array. But instead of elements sitting nicely side-by-side in your RAM, they're scattered everywhere. Each piece (or "node") just holds onto a little string that points to the next guy in line. 
+
+If you're using JS, think of it as a chain of objects. Every single object has a `next` property grabbing the tail of another object. We use these for things like undo buttons, queue logic, or fixing hash collisions.
+
+### 2. Node Structure
+
+Because JS is dynamically typed, we don't do `structs`. We just slap together a basic class and call it a day.
+
+```javascript
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null; // Stays null until we attach something
+    }
+}
+
+// Making a tiny list: 10 -> 20
+let head = new Node(10);
+head.next = new Node(20);
+```
+
+Wait, where did the pointers go? 
+
+Well, in JS, objects are passed by reference automatically. If you write `let temp = head;`, you're basically holding a pointer without the ugly `*` syntax. Tweak `temp.next`, and boom—you just permanently altered the main list. 
+
+### 3. Turning Arrays into Lists
+
+You're gonna need to do this a lot on LeetCode. Just loop the array, spawn a node, link it, and shift forward. Pretty painless.
+
+```javascript
+function arrayToLinkedList(arr) {
+    if (arr.length === 0) return null;
+    
+    let head = new Node(arr[0]);
+    let current = head;
+    
+    for (let i = 1; i < arr.length; i++) {
+        current.next = new Node(arr[i]); 
+        current = current.next;          
+    }
+    
+    return head;
+}
+```
+
+### 💡 My JS Survival Tips
+
+*   **Dummy Nodes**: Seriously, just use a dummy head (`let dummy = new Node(0);`). It lets you skip writing five lines of messy edge cases for empty lists. You just return `dummy.next` at the end and look like a genius.
+*   **The dreaded TypeError**: `Cannot read properties of null (reading 'next')`. Yeah, you'll see this a lot. Double-check your while loops before you blow up the engine.
+
+---
+
+## 🦀 Rust: The Final Boss
+
+Alright, over to Rust. Writing a Linked List in Rust is basically a hazing ritual for new developers. I'm not kidding. 
+    
+Why? Because Rust promises absolute memory safety at compile-time, no garbage collector allowed. You have to literally track every single reference, take ownership explicitly, and deal with the fact that Rust straight-up murdered the concept of `null`.
+
+Let's see how much the compiler yells at us.
+
+### 1. Building the Node
+
+If you try to shove a `Node` inside another `Node` in Rust, the compiler panics. It screams "infinite size!" because it realistically needs to know exactly how many bytes a struct uses upfront.
+
+The workaround? We throw the next node onto the heap using `Box`, and wrap that whole mess in an `Option` because, again, no nulls allowed.
+
+```rust
+#[derive(Debug, Clone)]
+pub struct Node {
+    pub data: i32,
+    pub next: Option<Box<Node>>, // Our safe, heap-allocated lifeline
+}
+
+impl Node {
+    pub fn new(data: i32) -> Self {
+        Node { data, next: None }
+    }
+}
+```
+
+*   `Box` pushes the actual data away to the heap. What's left on the stack? A nice, predictable, fixed-size pointer.
+*   `Option` forces you to confront reality right there in the code: it's either `Some(Node)` or `None`. You literally cannot ignore it.
+
+### 2. The Array-to-List Nightmare
+
+The borrow checker makes building lists annoying if you try to do it left-to-right. Honestly, the absolute laziest (and smartest) way to build the list without ownership errors is to do it in reverse. Tail first.
+
+```rust
+fn array_to_linked_list(arr: Vec<i32>) -> Option<Box<Node>> {
+    let mut head = None;
+    
+    // Going backward. The very first item ultimately ends up as the final 'head'
+    for &val in arr.iter().rev() {
+        let mut new_node = Box::new(Node::new(val));
+        new_node.next = head; 
+        head = Some(new_node); 
+    }
+    
+    head
+}
+```
+
+### 3. Looking without Touching
+
+When you just want to read the list, you borrow it. Shared references (`&`). Don't consume the data, just peek from a distance.
+
+```rust
+fn print_list(head: &Option<Box<Node>>) {
+    let mut current = head;
+    
+    // safely peek inside without stealing ownership
+    while let Some(node) = current.as_ref() {
+        println!("{}", node.data);
+        current = &node.next; // Scoot forward
+    }
+}
+```
+
+### ⚙️ LeetCode Rust Hack: `.take()`
+
+This specific thing tripped me up for hours. You can't just swap pointers around in Rust like you're playing musical chairs. Rust naturally gets paranoid that you're leaving a variable violently uninitialized.
+
+Enter `.take()`. It's actually magic. It rips the value directly out of the `Option`, hands you ownership, and leaves a hollow `None` sitting there in its place. Perfect for re-wiring nodes.
+
+```rust
+// How LeetCode gives it to you behind the scenes
+pub struct ListNode {
+  pub val: i32,
+  pub next: Option<Box<ListNode>>
+}
+
+pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    let mut prev = None;
+    let mut current = head;
+
+    while let Some(mut node) = current {
+        // Unplug the tail end, leaving None safely behind
+        let next_node = node.next.take(); 
+        
+        node.next = prev;                 // Flip the arrow backwards
+        prev = Some(node);                
+        current = next_node;              
+    }
+
+    prev // Boom. Meet the new head.
+}
+```
+
+### The Takeaway
+
+Working with JS makes you feel super productive (maybe a bit lazy), but Rust? Rust forces you to deeply understand what your memory is actually doing. It's frustrating as hell, but... weirdly satisfying when it finally compiles without twenty red squiggly lines.
+
+Anyway, I'm logging off for today. Next time I'm probably gonna tackle leetcode LinkedList probs if the borrow checker hasn't completely broken my spirit by then. Wish me luck with placements!
