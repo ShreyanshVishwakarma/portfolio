@@ -242,7 +242,6 @@ export default function Home() {
           >
             {/* Hero Content */}
             <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6">
-
               {/* Name */}
               <div className="w-full text-left overflow-visible">
                 <div className="mb-4 text-muted-foreground pl-6 font-light text-4xl sm:text-5xl md:text-6xl">
@@ -318,8 +317,6 @@ export default function Home() {
                 </Magnet>
               </div>
             </div>
-
-
           </section>
 
           {/* ──────────────────── Bento Overview Grid ──────────────────── */}
@@ -366,7 +363,7 @@ export default function Home() {
                           >
                             {t}
                           </span>
-                        )
+                        ),
                       )}
                     </div>
                     <a
@@ -375,8 +372,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:underline w-fit"
                     >
-                      View on GitHub{" "}
-                      <ArrowUpRight className="h-3.5 w-3.5" />
+                      View on GitHub <ArrowUpRight className="h-3.5 w-3.5" />
                     </a>
                   </div>
                 </BorderGlow>
@@ -464,7 +460,7 @@ export default function Home() {
                           >
                             {tech}
                           </span>
-                        ))
+                        )),
                       )}
                     </div>
                   </div>
@@ -531,7 +527,11 @@ export default function Home() {
                   </p>
                   <div className="flex flex-wrap gap-2 mb-5">
                     {featuredWorkProject.stack.map((t) => (
-                      <Badge key={t} variant="secondary" className="bg-foreground/5">
+                      <Badge
+                        key={t}
+                        variant="secondary"
+                        className="bg-foreground/5"
+                      >
                         {t}
                       </Badge>
                     ))}
@@ -614,8 +614,7 @@ export default function Home() {
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-1.5 text-sm font-medium hover:underline"
                             >
-                              Live Demo{" "}
-                              <ExternalLink className="h-3.5 w-3.5" />
+                              Live Demo <ExternalLink className="h-3.5 w-3.5" />
                             </a>
                           )}
                           <a
@@ -755,12 +754,38 @@ export default function Home() {
                         {i < timelineEvents.length - 1 && (
                           <div className="absolute left-[28px] sm:left-1/2 top-8 w-[60px] -translate-x-1/2 z-0 h-[calc(100%+2rem)] sm:h-[calc(100%+3rem)] text-blue-500/30">
                             {/* Mobile: straight line */}
-                            <svg fill="none" viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full sm:hidden">
-                              <path d="M 50 0 L 50 100" stroke="currentColor" strokeWidth="2.5" strokeDasharray="6 6" vectorEffect="non-scaling-stroke" />
+                            <svg
+                              fill="none"
+                              viewBox="0 0 100 100"
+                              preserveAspectRatio="none"
+                              className="w-full h-full sm:hidden"
+                            >
+                              <path
+                                d="M 50 0 L 50 100"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                strokeDasharray="6 6"
+                                vectorEffect="non-scaling-stroke"
+                              />
                             </svg>
                             {/* Desktop: alternating curve */}
-                            <svg fill="none" viewBox="0 0 100 100" preserveAspectRatio="none" className="hidden sm:block w-full h-full">
-                              <path d={isEven ? "M 50 0 C 50 20, 90 20, 90 50 C 90 80, 50 80, 50 100" : "M 50 0 C 50 20, 10 20, 10 50 C 10 80, 50 80, 50 100"} stroke="currentColor" strokeWidth="2.5" strokeDasharray="6 6" vectorEffect="non-scaling-stroke" />
+                            <svg
+                              fill="none"
+                              viewBox="0 0 100 100"
+                              preserveAspectRatio="none"
+                              className="hidden sm:block w-full h-full"
+                            >
+                              <path
+                                d={
+                                  isEven
+                                    ? "M 50 0 C 50 20, 90 20, 90 50 C 90 80, 50 80, 50 100"
+                                    : "M 50 0 C 50 20, 10 20, 10 50 C 10 80, 50 80, 50 100"
+                                }
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                strokeDasharray="6 6"
+                                vectorEffect="non-scaling-stroke"
+                              />
                             </svg>
                           </div>
                         )}
@@ -792,16 +817,24 @@ export default function Home() {
                             className={`glass rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5 flex flex-col items-start`}
                           >
                             <div className="flex items-center gap-3 mb-2 flex-row">
-                              <span className="text-xs font-bold text-foreground bg-foreground/5 px-2.5 py-1 rounded-md backdrop-blur-md border border-foreground/10" style={{ color: event.color }}>
+                              <span
+                                className="text-xs font-bold text-foreground bg-foreground/5 px-2.5 py-1 rounded-md backdrop-blur-md border border-foreground/10"
+                                style={{ color: event.color }}
+                              >
                                 {event.year}
                               </span>
                               {event.current && (
-                                <Badge variant="outline" className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 text-[10px] uppercase tracking-wider">
+                                <Badge
+                                  variant="outline"
+                                  className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 text-[10px] uppercase tracking-wider"
+                                >
                                   Current
                                 </Badge>
                               )}
                             </div>
-                            <h3 className="text-lg font-bold tracking-tight mb-1">{event.title}</h3>
+                            <h3 className="text-lg font-bold tracking-tight mb-1">
+                              {event.title}
+                            </h3>
                             <p className="text-sm text-muted-foreground leading-relaxed">
                               {event.description}
                             </p>
@@ -833,18 +866,27 @@ export default function Home() {
               <div className="glass rounded-3xl p-8 md:p-16 relative overflow-hidden border border-white/10 dark:border-white/5 shadow-2xl">
                 <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-blue-500/10 blur-[80px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-violet-500/10 blur-[80px] pointer-events-none" />
-                
+
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
                   <div className="text-center lg:text-left">
-                    <Badge variant="outline" className="mb-6 backdrop-blur-sm bg-background/50 border-blue-500/20 text-blue-500">
+                    <Badge
+                      variant="outline"
+                      className="mb-6 backdrop-blur-sm bg-background/50 border-blue-500/20 text-blue-500"
+                    >
                       Let&apos;s Collaborate
                     </Badge>
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-                      Ready to build something <br className="hidden lg:block"/>
-                      <span className="gradient-text italic pr-2">ambitious</span>?
+                      Ready to build something{" "}
+                      <br className="hidden lg:block" />
+                      <span className="gradient-text italic pr-2">
+                        ambitious
+                      </span>
+                      ?
                     </h2>
                     <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                      Whether it&apos;s real-time platforms, blockchain systems, or performant frontends — let&apos;s turn your vision into production-ready software.
+                      Whether it&apos;s real-time platforms, blockchain systems,
+                      or performant frontends — let&apos;s turn your vision into
+                      production-ready software.
                     </p>
                   </div>
 
@@ -853,8 +895,14 @@ export default function Home() {
                       <a
                         key={link.label}
                         href={link.href}
-                        target={link.href.startsWith("http") ? "_blank" : undefined}
-                        rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        target={
+                          link.href.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel={
+                          link.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                         className="group flex items-center justify-between p-4 rounded-xl border bg-background/40 hover:bg-background/80 hover:border-blue-500/30 transition-all duration-300"
                       >
                         <div className="flex items-center gap-4">
@@ -879,19 +927,27 @@ export default function Home() {
         <footer className="relative border-t border-foreground/10 bg-background/50 backdrop-blur-lg overflow-hidden py-12 mt-12">
           {/* Subtle gradient glow at the bottom */}
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-linear-to-t from-blue-500/10 to-transparent blur-2xl pointer-events-none" />
-          
+
           <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex flex-col items-center md:items-start">
-                <span className="text-lg font-bold tracking-tight mb-1">Shreyansh Vishwakarma</span>
+                <span className="text-lg font-bold tracking-tight mb-1">
+                  Shreyansh Vishwakarma
+                </span>
                 <p className="text-sm text-muted-foreground flex items-center gap-2">
-                  Building with intent <span className="w-1 h-1 rounded-full bg-muted-foreground/50"></span> {new Date().getFullYear()}
+                  Building with intent{" "}
+                  <span className="w-1 h-1 rounded-full bg-muted-foreground/50"></span>{" "}
+                  {new Date().getFullYear()}
                 </p>
               </div>
 
               <div className="flex items-center gap-4">
                 <Link href="/blog">
-                  <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:text-foreground"
+                  >
                     Blog
                   </Button>
                 </Link>
@@ -900,15 +956,24 @@ export default function Home() {
                     <TooltipTrigger asChild>
                       <a
                         href={link.href}
-                        target={link.href.startsWith("http") ? "_blank" : undefined}
-                        rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        target={
+                          link.href.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel={
+                          link.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                         className="group p-2.5 rounded-full hover:bg-foreground/5 transition-all duration-300 transform hover:scale-110"
                       >
                         <link.icon className="h-5 w-5 text-muted-foreground group-hover:text-blue-500 transition-colors" />
                         <span className="sr-only">{link.label}</span>
                       </a>
                     </TooltipTrigger>
-                    <TooltipContent side="top" className="text-xs bg-background/90 backdrop-blur border text-foreground">
+                    <TooltipContent
+                      side="top"
+                      className="text-xs bg-background/90 backdrop-blur border text-foreground"
+                    >
                       {link.label}
                     </TooltipContent>
                   </Tooltip>
