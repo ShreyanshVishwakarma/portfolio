@@ -411,7 +411,7 @@ export default function Home() {
                       B.Tech CSE • 2022-2026
                     </p>
                     <p className="text-3xl font-bold mt-4 gradient-text">
-                      8.17
+                      8.4
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">CGPA</p>
                   </div>
