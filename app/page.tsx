@@ -199,7 +199,7 @@ const stats = [
   { value: "7+", label: "Projects" },
   { value: "3+", label: "Years" },
   { value: "5", label: "Awards" },
-  { value: "8.17", label: "CGPA" },
+  { value: "8.4", label: "CGPA" },
 ];
 
 const contactLinks = [
