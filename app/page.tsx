@@ -398,16 +398,10 @@ export default function Home() {
                 {/* ── Quick Links ── */}
                 <div className="md:col-span-2 lg:row-span-2 glass rounded-2xl p-6 md:p-8">
                   <div className="relative z-10 h-full flex flex-col">
-                    <div className="flex items-center justify-between mb-5">
+                    <div className="mb-5">
                       <h3 className="text-lg md:text-2xl font-bold tracking-tight">
-                        Elsewhere
-                      </h3>
-                      <Badge
-                        variant="outline"
-                        className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20"
-                      >
                         Quick Links
-                      </Badge>
+                      </h3>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1">
                       {quickLinks.map((link) => (
@@ -422,20 +416,20 @@ export default function Home() {
                               ? "noopener noreferrer"
                               : undefined
                           }
-                          className="group/link flex items-center gap-3 p-3.5 rounded-xl border bg-foreground/40 hover:bg-foreground/10 hover:border-blue-500/30 transition-all duration-300"
+                          className="group/link flex items-center gap-3 p-3.5 rounded-xl border border-slate-700/50 bg-slate-900/90 hover:border-blue-500/40 hover:bg-slate-900 transition-all duration-300"
                         >
-                          <div className="h-10 w-10 shrink-0 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center">
-                            <link.icon className="h-5 w-5 text-blue-500 dark:text-blue-400" />
+                          <div className="h-10 w-10 shrink-0 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center">
+                            <link.icon className="h-5 w-5 text-blue-400" />
                           </div>
                           <div className="min-w-0">
-                            <p className="text-sm font-semibold truncate">
+                            <p className="text-sm font-semibold text-slate-100 truncate">
                               {link.label}
                             </p>
-                            <p className="text-xs text-muted-foreground truncate">
+                            <p className="text-xs text-slate-400 truncate">
                               {link.description}
                             </p>
                           </div>
-                          <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-muted-foreground/50 group-hover/link:text-blue-500 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />
+                          <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-slate-500 group-hover/link:text-blue-400 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />
                         </a>
                       ))}
                     </div>

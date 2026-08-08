@@ -9,7 +9,6 @@ import {
   Send,
   Linkedin,
   Twitter,
-  Globe,
   ExternalLink,
 } from "lucide-react";
 import Link from "next/link";
@@ -41,12 +40,6 @@ const contactItems = [
     value: "@shreyansh_0x0_",
     href: "https://x.com/shreyansh_0x0_",
     icon: Twitter,
-  },
-  {
-    label: "Website",
-    value: "shreyansh.is-a.dev",
-    href: "https://shreyansh.is-a.dev/",
-    icon: Globe,
   },
 ];
 
