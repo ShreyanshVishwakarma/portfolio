@@ -154,12 +154,19 @@ const techCategories = [
 
 const timelineEvents = [
   {
+    year: "2026",
+    title: "SQLBuddy Launch",
+    description:
+      "Launched the SQL interview prep platform I built after hating every one on the internet — SQLite compiled to WebAssembly, every query running right in the browser. 1.5k+ edge requests within hours from a single Reddit post",
+    color: "#f43f5e",
+    current: true,
+  },
+  {
     year: "2025",
     title: "GDG Blockchain Lead",
     description:
-      "Leading blockchain initiatives and organizing national-level technical events at Google Developer Group, IIIT Surat",
+      "Led blockchain initiatives and organized national-level technical events at Google Developer Group, IIIT Surat",
     color: "#3b82f6",
-    current: true,
   },
   {
     year: "2026",
@@ -167,13 +174,6 @@ const timelineEvents = [
     description:
       "Built complete Jeopardy-style CTF platform and organized a national cybersecurity competition with 150+ participants across India and 100k+ impressions on Unstop",
     color: "#8b5cf6",
-  },
-  {
-    year: "2026",
-    title: "SQLBuddy Launch",
-    description:
-      "Built the SQL interview prep platform I use daily — SQLite compiled to WebAssembly, all queries running in the browser. 1.5k+ edge requests in hours from a single Reddit post",
-    color: "#f43f5e",
   },
   {
     year: "2026",
@@ -255,7 +255,7 @@ export default function Home() {
           {/* ──────────────────── Hero ──────────────────── */}
           <section
             id="home"
-            className="relative min-h-screen flex flex-col items-center justify-center "
+            className="relative min-h-screen flex flex-col items-center justify-center pt-16 pb-8"
           >
             {/* Hero Content */}
             <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6">
@@ -416,12 +416,12 @@ export default function Home() {
                       </span>
                     </div>
                     <Layers className="h-8 w-8 text-blue-500 dark:text-blue-400 mb-3" />
-                    <h3 className="text-lg font-bold">Blockchain Lead</h3>
+                    <h3 className="text-lg font-bold">Building in Public</h3>
                     <p className="text-muted-foreground text-sm mt-1">
-                      Google Developer Group
+                      SQLBuddy — SQL interview prep
                     </p>
                     <p className="text-muted-foreground text-xs mt-0.5">
-                      IIIT Surat • 2025
+                      Launched 2026
                     </p>
                   </div>
                 </div>
