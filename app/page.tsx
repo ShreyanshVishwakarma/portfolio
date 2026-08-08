@@ -47,18 +47,28 @@ const workProjects = [
   {
     title: "CTF Platform",
     description:
-      "Jeopardy-style cybersecurity competition platform with real-time leaderboard, flag validation, and complete challenge infrastructure for a national-level event.",
+      "Jeopardy-style cybersecurity competition platform with real-time leaderboard, flag validation, and complete challenge infrastructure. Powered a national event with 150+ participants across India and 100k+ impressions on Unstop.",
     stack: ["Next.js", "Convex", "React", "TypeScript"],
-    repo: "https://github.com/ShreyanshVishwakarma/ctf-platform",
+    repo: "https://github.com/ShreyanshVishwakarma/ctf",
     link: "https://ctf-seven-kappa.vercel.app/",
     gradient: "from-violet-500/10 to-purple-500/10",
     featured: true,
   },
   {
+    title: "SQLBuddy",
+    description:
+      "The SQL interview prep tool I built after hating every one on the internet — I use it daily, and so do my friends. Every query runs against SQLite compiled to WebAssembly, right in the browser. 1.5k+ edge requests within hours of launch from a single Reddit post.",
+    stack: ["Next.js", "TypeScript", "SQLite WASM", "Monaco", "WebAssembly"],
+    link: "https://sqlbuddy-eta.vercel.app/",
+    repo: "https://github.com/ShreyanshVishwakarma/sqlbuddy",
+    gradient: "from-rose-500/10 to-orange-500/10",
+    featured: false,
+  },
+  {
     title: "JustChatting",
     description:
-      "End-to-end encrypted, local-first chat app with real-time friend system, notifications, and offline support built with modern auth and database.",
-    stack: ["Next.js 15", "TypeScript", "Socket.io", "Convex", "Clerk"],
+      "My flagship project — a real-time chat app built purely because I wanted to build it. Full end-to-end encryption using the native Web Crypto API, with a friends system, notifications, and offline support.",
+    stack: ["Next.js 15", "TypeScript", "Socket.io", "Convex", "Web Crypto API"],
     link: "https://justchatting-eight.vercel.app",
     repo: "https://github.com/ShreyanshVishwakarma/justchatting",
     gradient: "from-blue-500/10 to-indigo-500/10",
@@ -155,8 +165,15 @@ const timelineEvents = [
     year: "2026",
     title: "National CTF Event Organizer",
     description:
-      "Built complete Jeopardy-style CTF platform and organized national cybersecurity competition with participants across India",
+      "Built complete Jeopardy-style CTF platform and organized a national cybersecurity competition with 150+ participants across India and 100k+ impressions on Unstop",
     color: "#8b5cf6",
+  },
+  {
+    year: "2026",
+    title: "SQLBuddy Launch",
+    description:
+      "Built the SQL interview prep platform I use daily — SQLite compiled to WebAssembly, all queries running in the browser. 1.5k+ edge requests in hours from a single Reddit post",
+    color: "#f43f5e",
   },
   {
     year: "2026",
@@ -316,6 +333,14 @@ export default function Home() {
                   </Button>
                 </Magnet>
               </div>
+
+              <p className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+                Actively seeking internship &amp; full-time opportunities
+              </p>
             </div>
           </section>
 
@@ -438,11 +463,11 @@ export default function Home() {
                   <div className="relative z-10">
                     <h3 className="text-lg font-bold mb-3">About</h3>
                     <p className="text-muted-foreground leading-relaxed text-sm">
-                      I&apos;m a systems-minded full-stack developer who blends
-                      product thinking with deep technical execution. I pair
-                      Rust, TypeScript, and Solidity with thoughtful UX to craft
-                      reliable, human-centered software — from real-time chat
-                      platforms to blockchain land registries.
+                      I&apos;m a Computer Science student obsessed with building
+                      high-performance systems and full-stack applications.
+                      Strong core CS fundamentals, a deep passion for clean
+                      code, and a drive to ship features fast — from real-time
+                      chat platforms to blockchain land registries.
                     </p>
                   </div>
                 </div>
