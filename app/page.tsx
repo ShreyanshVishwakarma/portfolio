@@ -16,17 +16,21 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ThemeToggle } from "@/components/theme-toggle";
 import {
   ArrowUpRight,
   Mail,
   Linkedin,
-  Send,
   Github,
   ExternalLink,
   GraduationCap,
   Terminal,
   Layers,
+  Twitter,
+  Globe,
+  BookOpen,
+  Database,
+  MessageSquare,
+  ShieldCheck,
 } from "lucide-react";
 
 /* ═══════════════════════════════════════════════════════════
@@ -219,14 +223,53 @@ const stats = [
   { value: "8.4", label: "CGPA" },
 ];
 
+const quickLinks = [
+  {
+    label: "SQLBuddy",
+    description: "SQL interview prep",
+    href: "https://sqlbuddy-eta.vercel.app/",
+    icon: Database,
+  },
+  {
+    label: "JustChatting",
+    description: "Real-time E2E chat app",
+    href: "https://justchatting-eight.vercel.app",
+    icon: MessageSquare,
+  },
+  {
+    label: "CTF Platform",
+    description: "National CTF event",
+    href: "https://ctf-seven-kappa.vercel.app/",
+    icon: ShieldCheck,
+  },
+  {
+    label: "Blog",
+    description: "Notes & writeups",
+    href: "/blog",
+    icon: BookOpen,
+  },
+  {
+    label: "GitHub",
+    description: "All my open-source work",
+    href: "https://github.com/ShreyanshVishwakarma",
+    icon: Github,
+  },
+  {
+    label: "Website",
+    description: "shreyansh.is-a.dev",
+    href: "https://shreyansh.is-a.dev/",
+    icon: Globe,
+  },
+];
+
 const contactLinks = [
-  { label: "Email", href: "mailto:shreyanshvish004@gmail.com", icon: Mail },
+  { label: "Gmail", href: "/contact", icon: Mail },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/shreyansh-vishwakarma-63a853296/",
     icon: Linkedin,
   },
-  { label: "Telegram", href: "https://t.me/shreyanshvishwakarma", icon: Send },
+  { label: "X (Twitter)", href: "https://x.com/shreyansh_0x0_", icon: Twitter },
   {
     label: "GitHub",
     href: "https://github.com/ShreyanshVishwakarma",
@@ -246,11 +289,6 @@ export default function Home() {
   return (
     <TooltipProvider>
       <div className="min-h-screen bg-background">
-        {/* ──────────────────── Theme Toggle Only ──────────────────── */}
-        <div className="fixed top-5 right-5 z-50">
-          <ThemeToggle />
-        </div>
-
         <main>
           {/* ──────────────────── Hero ──────────────────── */}
           <section
@@ -321,7 +359,7 @@ export default function Home() {
                     variant="ghost"
                     className="gap-2"
                   >
-                    <a href="mailto:shreyanshvish004@gmail.com">
+                    <a href="/contact">
                       Contact <ArrowUpRight className="h-4 w-4" />
                     </a>
                   </Button>
@@ -357,50 +395,52 @@ export default function Home() {
               threshold={0.1}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {/* ── Featured Project: LandTrust ── */}
-                <BorderGlow
-                  className="md:col-span-2 lg:row-span-2 glass rounded-2xl p-6 md:p-8 group cursor-default transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/5"
-                  glowRadius={32}
-                  borderRadius={20}
-                  edgeSensitivity={34}
-                  fillOpacity={0.35}
-                >
-                  <div className="absolute inset-0 bg-linear-to-br from-emerald-500/8 via-transparent to-cyan-500/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* ── Quick Links ── */}
+                <div className="md:col-span-2 lg:row-span-2 glass rounded-2xl p-6 md:p-8">
                   <div className="relative z-10 h-full flex flex-col">
-                    <Badge className="w-fit mb-4 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/15">
-                      🏆 Grand Finalist @ UDBHAV
-                    </Badge>
-                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">
-                      LandTrust
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
-                      Blockchain-based land registry on Ethereum with smart
-                      contracts for secure property transactions and
-                      decentralized ownership verification. Built for the
-                      national stage across 21 IIITs.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-5">
-                      {["Solidity", "Ethereum", "Next.js", "Blockchain"].map(
-                        (t) => (
-                          <span
-                            key={t}
-                            className="px-2.5 py-1 text-xs font-medium rounded-md bg-foreground/5 text-muted-foreground"
-                          >
-                            {t}
-                          </span>
-                        ),
-                      )}
+                    <div className="flex items-center justify-between mb-5">
+                      <h3 className="text-lg md:text-2xl font-bold tracking-tight">
+                        Elsewhere
+                      </h3>
+                      <Badge
+                        variant="outline"
+                        className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20"
+                      >
+                        Quick Links
+                      </Badge>
                     </div>
-                    <a
-                      href="https://github.com/ShreyanshVishwakarma/LandTrust"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:underline w-fit"
-                    >
-                      View on GitHub <ArrowUpRight className="h-3.5 w-3.5" />
-                    </a>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1">
+                      {quickLinks.map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          target={
+                            link.href.startsWith("http") ? "_blank" : undefined
+                          }
+                          rel={
+                            link.href.startsWith("http")
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
+                          className="group/link flex items-center gap-3 p-3.5 rounded-xl border bg-foreground/40 hover:bg-foreground/10 hover:border-blue-500/30 transition-all duration-300"
+                        >
+                          <div className="h-10 w-10 shrink-0 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center">
+                            <link.icon className="h-5 w-5 text-blue-500 dark:text-blue-400" />
+                          </div>
+                          <div className="min-w-0">
+                            <p className="text-sm font-semibold truncate">
+                              {link.label}
+                            </p>
+                            <p className="text-xs text-muted-foreground truncate">
+                              {link.description}
+                            </p>
+                          </div>
+                          <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-muted-foreground/50 group-hover/link:text-blue-500 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />
+                        </a>
+                      ))}
+                    </div>
                   </div>
-                </BorderGlow>
+                </div>
 
                 {/* ── Current Status ── */}
                 <div className="glass rounded-2xl p-6 group transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
