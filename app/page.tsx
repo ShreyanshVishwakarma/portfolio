@@ -26,7 +26,6 @@ import {
   Terminal,
   Layers,
   Twitter,
-  Globe,
   BookOpen,
   Database,
   MessageSquare,
@@ -255,10 +254,10 @@ const quickLinks = [
     icon: Github,
   },
   {
-    label: "Website",
-    description: "shreyansh.is-a.dev",
-    href: "https://shreyansh.is-a.dev/",
-    icon: Globe,
+    label: "LinkedIn",
+    description: "in/shreyansh-vishwakarma",
+    href: "https://www.linkedin.com/in/shreyansh-vishwakarma-63a853296/",
+    icon: Linkedin,
   },
 ];
 
