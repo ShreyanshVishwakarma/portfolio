@@ -372,13 +372,15 @@ export default function Home() {
                 </Magnet>
               </div>
 
-              <ShinyText
-                text="Actively seeking internship & full-time opportunities"
-                className="mt-6 block text-center text-sm text-muted-foreground"
-                color="#94a3b8"
-                shineColor="#ffffff"
-                speed={2.5}
-              />
+              <div className="mt-6 flex justify-center">
+                <ShinyText
+                  text="Actively seeking internship & full-time opportunities"
+                  className="text-center text-sm text-muted-foreground"
+                  color="#94a3b8"
+                  shineColor="#ffffff"
+                  speed={2.5}
+                />
+              </div>
             </div>
           </section>
 
