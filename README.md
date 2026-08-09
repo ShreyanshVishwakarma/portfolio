@@ -1,8 +1,8 @@
-# Shreyansh Vishwakarma — Portfolio
+# Shreyansh Vishwakarma : Portfolio
 
 My personal portfolio and resume website, built with Next.js 16, TypeScript, and Tailwind CSS v4.
 
-It features an animated hero, a bento "about" grid, quick links, a project gallery, an experience timeline, a contact page, and a password-protected résumé page — all designed to feel fast, polished, and a little extra.
+It features an animated hero, a bento "about" grid, quick links, a project gallery, an experience timeline, a contact page, and a password-protected résumé page, all designed to feel fast, polished, and a little extra.
 
 ## ✨ Highlights
 
