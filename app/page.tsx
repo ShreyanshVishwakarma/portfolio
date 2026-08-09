@@ -416,20 +416,22 @@ export default function Home() {
                               ? "noopener noreferrer"
                               : undefined
                           }
-                          className="group/link flex items-center gap-3 p-3.5 rounded-xl border border-slate-700/50 bg-slate-900/90 hover:border-blue-500/40 hover:bg-slate-900 transition-all duration-300"
+                          className="group flex items-center justify-between p-4 rounded-xl border bg-background/40 hover:bg-background/80 hover:border-blue-500/30 transition-all duration-300"
                         >
-                          <div className="h-10 w-10 shrink-0 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center">
-                            <link.icon className="h-5 w-5 text-blue-400" />
+                          <div className="flex items-center gap-4 min-w-0">
+                            <div className="h-10 w-10 shrink-0 text-muted-foreground group-hover:text-blue-500 rounded-full bg-foreground/5 shadow-sm flex items-center justify-center transition-colors">
+                              <link.icon className="h-5 w-5" />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="font-semibold text-foreground/80 group-hover:text-foreground transition-colors truncate">
+                                {link.label}
+                              </p>
+                              <p className="text-xs text-muted-foreground truncate">
+                                {link.description}
+                              </p>
+                            </div>
                           </div>
-                          <div className="min-w-0">
-                            <p className="text-sm font-semibold text-slate-100 truncate">
-                              {link.label}
-                            </p>
-                            <p className="text-xs text-slate-400 truncate">
-                              {link.description}
-                            </p>
-                          </div>
-                          <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-slate-500 group-hover/link:text-blue-400 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />
+                          <ArrowUpRight className="ml-auto h-5 w-5 shrink-0 text-muted-foreground/50 group-hover:text-blue-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
                         </a>
                       ))}
                     </div>
