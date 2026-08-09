@@ -1,39 +1,38 @@
-# Developer Portfolio Starter
+# Shreyansh Vishwakarma — Portfolio
 
-A polished developer portfolio scaffold built with Next.js 16, TypeScript, and Tailwind CSS v4. It ships with the essential sections you need to tell your story, showcase projects, and invite new collaborations.
+My personal portfolio and resume website, built with Next.js 16, TypeScript, and Tailwind CSS v4.
+
+It features an animated hero, a bento "about" grid, quick links, a project gallery, an experience timeline, a contact page, and a password-protected résumé page — all designed to feel fast, polished, and a little extra.
 
 ## ✨ Highlights
 
-- **Hero & narrative:** Clear positioning, availability badge, and quick CTAs.
-- **About & skills:** Ready-made copy structure with editable bullet points and a responsive skills grid.
-- **Experience timeline:** Card layout for roles, impact statements, and career context.
-- **Project gallery:** Highlight three featured projects with stack chips and outbound links.
-- **Contact CTA:** Gradient call-to-action with customizable social links.
+- **Animated hero:** Fuzzy and pressure-reactive name, shimmer availability line, and quick CTAs.
+- **Bento overview:** Quick links, current status, education, stats, and tech stack in a responsive grid.
+- **Project gallery:** Production projects (SQLBuddy, CTF Platform, JustChatting, and more) with live demo and source links.
+- **Timeline:** Journey from first code to national CTF organizer.
+- **Contact & résumé:** A `/contact` page with all ways to reach me, plus a `/resume` page that requests your email before sharing the résumé.
 
 ## 🚀 Quick start
-
-Install dependencies and launch the local dev server:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to view the site. Edits to files inside `app/` trigger instant refreshes.
+Visit [http://localhost:3000](http://localhost:3000). Edits inside `app/` trigger instant refreshes.
 
-## 🔧 Customizing
+## 🔧 Customizing (make it yours)
 
-- Update personal details, sections, and data objects in `app/page.tsx` (look for the `navItems`, `stats`, `experience`, `projects`, and `contactLinks` constants).
-- Adjust global typography or tokens in `app/globals.css`.
-- Drop assets like logos or screenshots into `public/` and reference them with Next.js `<Image />`.
-- Replace `your.name`, social handles, and URLs with your real information before deploying.
+This site is built by **Shreyansh Vishwakarma**, and the content is intentionally **hardcoded** — no CMS, no database.
 
-## 📦 Tech stack
+The easiest way to make it yours: **ask your LLM to replace the hardcoded values.** All personal data lives in a few obvious places:
 
-- [Next.js 16](https://nextjs.org/) App Router
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS v4](https://tailwindcss.com/) (PostCSS-only setup)
-- [Geist](https://vercel.com/font) font family via `next/font`
+- `app/page.tsx` — name, subtitle, `quickLinks`, `workProjects`, `labProjects`, `timelineEvents`, `stats`, and `contactLinks`.
+- `app/contact/page.tsx` — your emails and social links.
+- `app/globals.css` — theme colors and fonts.
+- `app/icon.svg` — the favicon.
+
+Swap in your own projects, links, and story, then redeploy. Everything else just works.
 
 ## 📄 Helpful scripts
 
@@ -46,5 +45,4 @@ npm run lint    # Run ESLint
 
 ## ☁️ Deploying
 
-Deploy effortlessly to [Vercel](https://vercel.com/) or your hosting provider of choice. The project is production-ready out of the box—just add environment variables (if any) and connect your repository.
-# portfolio
+Deploy to [Vercel](https://vercel.com/) or any Next.js host. It's production-ready — connect your repo and you're live.
