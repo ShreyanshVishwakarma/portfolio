@@ -8,6 +8,7 @@ import FuzzyText from "@/components/FuzzyText";
 import TextPressure from "@/components/TextPressure";
 import Magnet from "@/components/Magnet";
 import BorderGlow from "@/components/BorderGlow";
+import ShinyText from "@/components/ShinyText";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -371,13 +372,13 @@ export default function Home() {
                 </Magnet>
               </div>
 
-              <p className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-                </span>
-                Actively seeking internship &amp; full-time opportunities
-              </p>
+              <ShinyText
+                text="Actively seeking internship & full-time opportunities"
+                className="mt-6 block text-center text-sm text-muted-foreground"
+                color="#94a3b8"
+                shineColor="#ffffff"
+                speed={2.5}
+              />
             </div>
           </section>
 
@@ -442,10 +443,6 @@ export default function Home() {
                   <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-violet-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative z-10">
                     <div className="flex items-center gap-2 mb-4">
-                      <span
-                        className="h-2.5 w-2.5 rounded-full bg-emerald-400 glow-dot"
-                        style={{ color: "#34d399" }}
-                      />
                       <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
                         Active
                       </span>
@@ -858,7 +855,7 @@ export default function Home() {
                           >
                             {event.current && (
                               <div
-                                className="absolute inset-0 m-0.5 rounded-full animate-pulse"
+                                className="absolute inset-0 m-0.5 rounded-full"
                                 style={{ background: event.color }}
                               />
                             )}
