@@ -14,6 +14,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 ::selection {
   background: rgba(59, 130, 246, 0.2);
   color: inherit;
