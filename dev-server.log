@@ -17,3 +17,8 @@
  GET / 200 in 172ms (compile: 7ms, render: 165ms)
  GET / 200 in 213ms (compile: 20ms, render: 193ms)
  GET / 200 in 218ms (compile: 21ms, render: 197ms)
+ GET / 200 in 782ms (compile: 87ms, render: 695ms)
+ GET / 200 in 225ms (compile: 19ms, render: 207ms)
+ GET / 200 in 216ms (compile: 15ms, render: 201ms)
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[?25h

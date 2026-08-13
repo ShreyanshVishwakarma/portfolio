@@ -29,9 +29,10 @@ const geistMono = Geist_Mono({
 
 const siteTitle = "Shreyansh Vishwakarma — Full-Stack Software Engineer";
 const siteDescription =
-  "I am a full-stack developer specializing in building high-performance backend systems with Rust and scalable, real-time web applications using TypeScript.";
+  "High-performance backend systems and scalable, real-time web applications.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shreyansh.is-a.dev"),
   title: {
     default: siteTitle,
     template: "%s | Shreyansh Vishwakarma",
