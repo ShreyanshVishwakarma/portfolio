@@ -158,47 +158,11 @@ const techCategories = [
 
 const timelineEvents = [
   {
-    year: "2026",
-    title: "SQLBuddy Launch",
-    description:
-      "Launched the SQL interview prep platform I built after hating every one on the internet — SQLite compiled to WebAssembly, every query running right in the browser. 1.5k+ edge requests within hours from a single Reddit post",
-    color: "#f43f5e",
-    current: true,
-  },
-  {
-    year: "2025",
-    title: "GDG Blockchain Lead",
-    description:
-      "Led blockchain initiatives and organized national-level technical events at Google Developer Group, IIIT Surat",
-    color: "#3b82f6",
-  },
-  {
-    year: "2026",
-    title: "National CTF Event Organizer",
-    description:
-      "Built complete Jeopardy-style CTF platform and organized a national cybersecurity competition with 150+ participants across India and 100k+ impressions on Unstop",
-    color: "#8b5cf6",
-  },
-  {
-    year: "2026",
-    title: "UDBHAV Grand Finalist",
-    description:
-      "Led team through 3 rounds — intra-college → inter-IIIT → national finals across 21 IIITs with LandTrust blockchain project",
-    color: "#f59e0b",
-  },
-  {
-    year: "2024",
-    title: "ScriptSorcery Winner",
-    description:
-      "Won frontend development competition with CHANEL concept featuring advanced GSAP animations and mobile-first design",
-    color: "#f59e0b",
-  },
-  {
     year: "2023",
-    title: "Freelance Developer",
+    title: "Started B.Tech at IIIT Surat",
     description:
-      "Started building real-time web applications with Next.js, TypeScript, and scalable backend systems for clients",
-    color: "#10b981",
+      "Began Computer Science and Engineering, diving into full-stack development and systems programming",
+    color: "#06b6d4",
   },
   {
     year: "2023",
@@ -209,10 +173,46 @@ const timelineEvents = [
   },
   {
     year: "2023",
-    title: "Started B.Tech at IIIT Surat",
+    title: "Freelance Developer",
     description:
-      "Began Computer Science and Engineering, diving into full-stack development and systems programming",
-    color: "#06b6d4",
+      "Started building real-time web applications with Next.js, TypeScript, and scalable backend systems for clients",
+    color: "#10b981",
+  },
+  {
+    year: "2024",
+    title: "ScriptSorcery Winner",
+    description:
+      "Won frontend development competition with CHANEL concept featuring advanced GSAP animations and mobile-first design",
+    color: "#f59e0b",
+  },
+  {
+    year: "2025",
+    title: "GDG Blockchain Lead",
+    description:
+      "Led blockchain initiatives and organized national-level technical events at Google Developer Group, IIIT Surat",
+    color: "#3b82f6",
+  },
+  {
+    year: "2026",
+    title: "UDBHAV Grand Finalist",
+    description:
+      "Led team through 3 rounds — intra-college → inter-IIIT → national finals across 21 IIITs with LandTrust blockchain project",
+    color: "#f59e0b",
+  },
+  {
+    year: "2026",
+    title: "National CTF Event Organizer",
+    description:
+      "Built complete Jeopardy-style CTF platform and organized a national cybersecurity competition with 150+ participants across India and 100k+ impressions on Unstop",
+    color: "#8b5cf6",
+  },
+  {
+    year: "2026",
+    title: "SQLBuddy Launch",
+    description:
+      "Launched the SQL interview prep platform I built after hating every one on the internet — SQLite compiled to WebAssembly, every query running right in the browser. 1.5k+ edge requests within hours from a single Reddit post",
+    color: "#f43f5e",
+    current: true,
   },
 ];
 
@@ -467,7 +467,7 @@ export default function Home() {
                     <GraduationCap className="h-8 w-8 text-cyan-500 dark:text-cyan-400 mb-3" />
                     <h3 className="text-lg font-bold">IIIT Surat</h3>
                     <p className="text-sm text-muted-foreground mt-1">
-                      B.Tech CSE • 2022-2026
+                      B.Tech CSE • 2023-2027
                     </p>
                     <p className="text-3xl font-bold mt-4 gradient-text">
                       8.4
