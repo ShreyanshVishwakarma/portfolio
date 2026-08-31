@@ -27,7 +27,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteTitle = "Shreyansh Vishwakarma — Full-Stack Software Engineer";
+const siteTitle = "Shreyansh Vishwakarma | Full-Stack Software Engineer";
 const siteDescription =
   "High-performance backend systems and scalable, real-time web applications.";
 
