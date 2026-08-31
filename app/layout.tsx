@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     "Convex",
     "WebAssembly",
   ],
-  authors: [{ name: "Shreyansh Vishwakarma", url: "https://www.linkedin.com/in/shreyansh-vishwakarma-63a853296/" }],
+  authors: [{ name: "Shreyansh Vishwakarma", url: "https://www.linkedin.com/in/shreyanshvishwakarma/" }],
   creator: "Shreyansh Vishwakarma",
   publisher: "Shreyansh Vishwakarma",
   alternates: {

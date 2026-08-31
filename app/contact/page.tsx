@@ -14,13 +14,13 @@ import {
 import Link from "next/link";
 import AnimatedContent from "@/components/AnimatedContent";
 
-const primaryEmail = "shreyanshvish004@gmail.com";
+const primaryEmail = "shreyanshvishwak@gmail.com";
 
 const contactItems = [
   {
     label: "Gmail",
-    value: "shreyanshvish004@gmail.com",
-    href: "mailto:shreyanshvish004@gmail.com",
+    value: "shreyanshvishwak@gmail.com",
+    href: "mailto:shreyanshvishwak@gmail.com",
     icon: Mail,
   },
   {
@@ -31,8 +31,8 @@ const contactItems = [
   },
   {
     label: "LinkedIn",
-    value: "in/shreyansh-vishwakarma",
-    href: "https://www.linkedin.com/in/shreyansh-vishwakarma-63a853296/",
+    value: "in/shreyanshvishwakarma",
+    href: "https://www.linkedin.com/in/shreyanshvishwakarma/",
     icon: Linkedin,
   },
   {

@@ -256,8 +256,8 @@ const quickLinks = [
   },
   {
     label: "LinkedIn",
-    description: "in/shreyansh-vishwakarma",
-    href: "https://www.linkedin.com/in/shreyansh-vishwakarma-63a853296/",
+    description: "in/shreyanshvishwakarma",
+    href: "https://www.linkedin.com/in/shreyanshvishwakarma/",
     icon: Linkedin,
   },
 ];
@@ -266,7 +266,7 @@ const contactLinks = [
   { label: "Gmail", href: "/contact", icon: Mail },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/shreyansh-vishwakarma-63a853296/",
+    href: "https://www.linkedin.com/in/shreyanshvishwakarma/",
     icon: Linkedin,
   },
   { label: "X (Twitter)", href: "https://x.com/shreyansh_0x0_", icon: Twitter },
