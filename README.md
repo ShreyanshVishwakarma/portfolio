@@ -23,14 +23,14 @@ Visit [http://localhost:3000](http://localhost:3000). Edits inside `app/` trigge
 
 ## 🔧 Customizing (make it yours)
 
-This site is built by **Shreyansh Vishwakarma**, and the content is intentionally **hardcoded** — no CMS, no database.
+This site is built by **Shreyansh Vishwakarma**, and the content is intentionally **hardcoded**, with no CMS and no database.
 
 The easiest way to make it yours: **ask your LLM to replace the hardcoded values.** All personal data lives in a few obvious places:
 
-- `app/page.tsx` — name, subtitle, `quickLinks`, `workProjects`, `labProjects`, `timelineEvents`, `stats`, and `contactLinks`.
-- `app/contact/page.tsx` — your emails and social links.
-- `app/globals.css` — theme colors and fonts.
-- `app/icon.svg` — the favicon.
+- `app/page.tsx` covers name, subtitle, `quickLinks`, `workProjects`, `labProjects`, `timelineEvents`, `stats`, and `contactLinks`.
+- `app/contact/page.tsx` covers your emails and social links.
+- `app/globals.css` covers theme colors and fonts.
+- `app/icon.svg` covers the favicon.
 
 Swap in your own projects, links, and story, then redeploy. Everything else just works.
 
@@ -45,4 +45,4 @@ npm run lint    # Run ESLint
 
 ## ☁️ Deploying
 
-Deploy to [Vercel](https://vercel.com/) or any Next.js host. It's production-ready — connect your repo and you're live.
+Deploy to [Vercel](https://vercel.com/) or any Next.js host. It's production-ready, so just connect your repo and you're live.

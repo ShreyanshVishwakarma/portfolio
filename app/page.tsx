@@ -42,7 +42,7 @@ const workProjects = [
   {
     title: "Doppel",
     description:
-      "Autonomous browser-agent platform that runs your professional life — inbox triage, cold outreach, job applications — in stealth cloud browsers, logged in as you, with live trace streaming and per-run video replay. Ships a custom MCP server that restores persisted logins client-side for a 100% logged-in-session rate.",
+      "Autonomous browser-agent platform that runs your professional life, from inbox triage and cold outreach to job applications, in stealth cloud browsers logged in as you, with live trace streaming and per-run video replay. Ships a custom MCP server that restores persisted logins client-side for a 100% logged-in-session rate.",
     stack: ["Next.js 16", "TypeScript", "Convex", "Clerk", "Solari", "MCP"],
     link: "https://doppel-phi.vercel.app/",
     gradient: "from-sky-500/10 to-violet-500/10",
@@ -52,7 +52,7 @@ const workProjects = [
   {
     title: "LandTrust",
     description:
-      "Blockchain-based land registry on Ethereum — secure property transactions, decentralized ownership verification, and immutable land records. Represented IIIT Surat through 3 national rounds across 21 IIITs.",
+      "Blockchain-based land registry on Ethereum, with secure property transactions, decentralized ownership verification, and immutable land records. Represented IIIT Surat through 3 national rounds across 21 IIITs.",
     stack: ["Solidity", "Ethereum", "Next.js", "Blockchain"],
     repo: "https://github.com/ShreyanshVishwakarma/LandTrust",
     gradient: "from-emerald-500/10 to-cyan-500/10",
@@ -72,7 +72,7 @@ const workProjects = [
   {
     title: "SQLBuddy",
     description:
-      "The SQL interview prep tool I built after hating every one on the internet — I use it daily, and so do my friends. Every query runs against SQLite compiled to WebAssembly, right in the browser. 1.5k+ edge requests within hours of launch from a single Reddit post.",
+      "The SQL interview prep tool I built after hating every one on the internet; I use it daily, and so do my friends. Every query runs against SQLite compiled to WebAssembly, right in the browser. 1.5k+ edge requests within hours of launch from a single Reddit post.",
     stack: ["Next.js", "TypeScript", "SQLite WASM", "Monaco", "WebAssembly"],
     link: "https://sqlbuddy-eta.vercel.app/",
     repo: "https://github.com/ShreyanshVishwakarma/sqlbuddy",
@@ -82,7 +82,7 @@ const workProjects = [
   {
     title: "JustChatting",
     description:
-      "My flagship project — a real-time chat app built purely because I wanted to build it. Full end-to-end encryption using the native Web Crypto API, with a friends system, notifications, and offline support.",
+      "My flagship project, a real-time chat app built purely because I wanted to build it. Full end-to-end encryption using the native Web Crypto API, with a friends system, notifications, and offline support.",
     stack: ["Next.js 15", "TypeScript", "Socket.io", "Convex", "Web Crypto API"],
     link: "https://justchat.page/",
     repo: "https://github.com/ShreyanshVishwakarma/justchatting",
@@ -115,7 +115,7 @@ const labProjects = [
   {
     title: "shreyansh-tui",
     description:
-      "My portfolio that lives in your terminal — an interactive TUI with a purpose-led entry, project browser, markdown blog reader, command palette (Ctrl+K), and vim-style navigation. Published on npm, runs instantly with zero install.",
+      "My portfolio that lives in your terminal, an interactive TUI with a purpose-led entry, project browser, markdown blog reader, command palette (Ctrl+K), and vim-style navigation. Published on npm, runs instantly with zero install.",
     stack: ["TypeScript", "Ink", "React", "Node.js", "tsup"],
     repo: "https://github.com/ShreyanshVishwakarma/shreyansh-tui",
     command: "npx shreyansh",
@@ -124,7 +124,7 @@ const labProjects = [
   {
     title: "RustyML",
     description:
-      "Machine learning models from scratch in Rust — linear regression, logistic regression, and neural networks without any external ML libraries. Focused on memory-safe, high-performance implementations.",
+      "Machine learning models from scratch in Rust, covering linear regression, logistic regression, and neural networks without any external ML libraries. Focused on memory-safe, high-performance implementations.",
     stack: ["Rust", "Linear Algebra", "Machine Learning"],
     repo: "https://github.com/ShreyanshVishwakarma/RustyML",
     gradient: "from-orange-500/10 to-red-500/10",
@@ -216,7 +216,7 @@ const timelineEvents = [
     year: "2026",
     title: "UDBHAV Grand Finalist",
     description:
-      "Led team through 3 rounds — intra-college → inter-IIIT → national finals across 21 IIITs with LandTrust blockchain project",
+      "Led team through 3 rounds, from intra-college to inter-IIIT to national finals across 21 IIITs with the LandTrust blockchain project",
     color: "#f59e0b",
   },
   {
@@ -230,29 +230,15 @@ const timelineEvents = [
     year: "2026",
     title: "SQLBuddy Launch",
     description:
-      "Launched the SQL interview prep platform I built after hating every one on the internet — SQLite compiled to WebAssembly, every query running right in the browser. 1.5k+ edge requests within hours from a single Reddit post",
+      "Launched the SQL interview prep platform I built after hating every one on the internet; SQLite compiled to WebAssembly, every query running right in the browser. 1.5k+ edge requests within hours from a single Reddit post",
     color: "#f43f5e",
-  },
-  {
-    year: "2026",
-    title: "JustChat Custom Domain",
-    description:
-      "Shipped JustChatting to production on its own domain — https://justchat.page/ — real-time E2E-encrypted chat with friends system, notifications, and offline support",
-    color: "#3b82f6",
   },
   {
     year: "2026",
     title: "Doppel Launch",
     description:
-      "Solo-built autonomous browser-agent platform (Next.js 16, Convex, Clerk, stealth microVM browsers + custom MCP tooling) that triages inboxes, does outreach, and applies to jobs logged in as you — with live trace streaming and video replay",
+      "Solo-built autonomous browser-agent platform (Next.js 16, Convex, Clerk, stealth microVM browsers + custom MCP tooling) that triages inboxes, does outreach, and applies to jobs logged in as you, with live trace streaming and video replay",
     color: "#8b5cf6",
-  },
-  {
-    year: "2026",
-    title: "Terminal Portfolio on npm",
-    description:
-      "Published shreyansh-tui — my interactive portfolio that lives in the terminal (Ink + React). Run it anywhere with npx shreyansh or bunx shreyansh",
-    color: "#10b981",
     current: true,
   },
 ];
@@ -519,7 +505,7 @@ export default function Home() {
                     <Layers className="h-8 w-8 text-blue-500 dark:text-blue-400 mb-3" />
                     <h3 className="text-lg font-bold">Building in Public</h3>
                     <p className="text-muted-foreground text-sm mt-1">
-                      Doppel — autonomous browser agent
+                      Doppel, autonomous browser agent
                     </p>
                     <p className="text-muted-foreground text-xs mt-0.5">
                       Launched 2026
@@ -567,7 +553,7 @@ export default function Home() {
                       I&apos;m a Computer Science student obsessed with building
                       high-performance systems and full-stack applications.
                       Strong core CS fundamentals, a deep passion for clean
-                      code, and a drive to ship features fast — from real-time
+                      code, and a drive to ship features fast, from real-time
                       chat platforms to blockchain land registries.
                     </p>
                   </div>
@@ -867,7 +853,7 @@ export default function Home() {
                   The Timeline
                 </h2>
                 <p className="text-muted-foreground mt-2 max-w-xl mx-auto">
-                  From first code to blockchain leadership — a progression story
+                  From first code to blockchain leadership, a progression story
                 </p>
               </div>
             </AnimatedContent>
@@ -1023,7 +1009,7 @@ export default function Home() {
                     </h2>
                     <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
                       Whether it&apos;s real-time platforms, blockchain systems,
-                      or performant frontends — let&apos;s turn your vision into
+                      or performant frontends, let&apos;s turn your vision into
                       production-ready software.
                     </p>
                   </div>

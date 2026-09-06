@@ -7,7 +7,7 @@ const interSemiBold = readFile(join(process.cwd(), "assets", "inter-600.woff"));
 const interBold = readFile(join(process.cwd(), "assets", "inter-800.woff"));
 const iconData = readFile(join(process.cwd(), "app", "icon.png"));
 
-export const alt = "Shreyansh Vishwakarma — Full-Stack Software Engineer";
+export const alt = "Shreyansh Vishwakarma, Full-Stack Software Engineer";
 export const size = {
   width: 1200,
   height: 630,
