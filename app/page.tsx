@@ -27,7 +27,6 @@ import {
   Terminal,
   Layers,
   Twitter,
-  BookOpen,
   Database,
   MessageSquare,
   ShieldCheck,
@@ -274,12 +273,6 @@ const quickLinks = [
     description: "National CTF event",
     href: "https://ctf-seven-kappa.vercel.app/",
     icon: ShieldCheck,
-  },
-  {
-    label: "Blog",
-    description: "Notes & writeups",
-    href: "/blog",
-    icon: BookOpen,
   },
   {
     label: "GitHub",
