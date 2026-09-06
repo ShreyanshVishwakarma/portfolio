@@ -31,6 +31,7 @@ import {
   Database,
   MessageSquare,
   ShieldCheck,
+  Bot,
 } from "lucide-react";
 
 /* ═══════════════════════════════════════════════════════════
@@ -38,6 +39,16 @@ import {
    ═══════════════════════════════════════════════════════════ */
 
 const workProjects = [
+  {
+    title: "Doppel",
+    description:
+      "Autonomous browser-agent platform that runs your professional life — inbox triage, cold outreach, job applications — in stealth cloud browsers, logged in as you, with live trace streaming and per-run video replay. Ships a custom MCP server that restores persisted logins client-side for a 100% logged-in-session rate.",
+    stack: ["Next.js 16", "TypeScript", "Convex", "Clerk", "Solari", "MCP"],
+    link: "https://doppel-phi.vercel.app/",
+    gradient: "from-sky-500/10 to-violet-500/10",
+    featured: true,
+    badge: "⭐ Featured Project",
+  },
   {
     title: "LandTrust",
     description:
@@ -56,7 +67,7 @@ const workProjects = [
     repo: "https://github.com/ShreyanshVishwakarma/ctf",
     link: "https://ctf-seven-kappa.vercel.app/",
     gradient: "from-violet-500/10 to-purple-500/10",
-    featured: true,
+    featured: false,
   },
   {
     title: "SQLBuddy",
@@ -73,7 +84,7 @@ const workProjects = [
     description:
       "My flagship project — a real-time chat app built purely because I wanted to build it. Full end-to-end encryption using the native Web Crypto API, with a friends system, notifications, and offline support.",
     stack: ["Next.js 15", "TypeScript", "Socket.io", "Convex", "Web Crypto API"],
-    link: "https://justchatting-eight.vercel.app",
+    link: "https://justchat.page/",
     repo: "https://github.com/ShreyanshVishwakarma/justchatting",
     gradient: "from-blue-500/10 to-indigo-500/10",
     featured: false,
@@ -102,6 +113,15 @@ const workProjects = [
 
 const labProjects = [
   {
+    title: "shreyansh-tui",
+    description:
+      "My portfolio that lives in your terminal — an interactive TUI with a purpose-led entry, project browser, markdown blog reader, command palette (Ctrl+K), and vim-style navigation. Published on npm, runs instantly with zero install.",
+    stack: ["TypeScript", "Ink", "React", "Node.js", "tsup"],
+    repo: "https://github.com/ShreyanshVishwakarma/shreyansh-tui",
+    command: "npx shreyansh",
+    gradient: "from-lime-500/10 to-emerald-500/10",
+  },
+  {
     title: "RustyML",
     description:
       "Machine learning models from scratch in Rust — linear regression, logistic regression, and neural networks without any external ML libraries. Focused on memory-safe, high-performance implementations.",
@@ -127,13 +147,13 @@ const techCategories = [
   },
   {
     name: "Frontend",
-    techs: ["Next.js 15", "React 19", "Tailwind CSS", "GSAP", "Bootstrap"],
+    techs: ["Next.js 16", "React 19", "Tailwind CSS", "GSAP", "Bootstrap"],
     color:
       "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20",
   },
   {
     name: "Backend",
-    techs: ["Node.js", "Express.js", "Convex", "Socket.io"],
+    techs: ["Node.js", "Express.js", "Convex", "Socket.io", "Clerk", "MCP"],
     color:
       "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
   },
@@ -212,18 +232,45 @@ const timelineEvents = [
     description:
       "Launched the SQL interview prep platform I built after hating every one on the internet — SQLite compiled to WebAssembly, every query running right in the browser. 1.5k+ edge requests within hours from a single Reddit post",
     color: "#f43f5e",
+  },
+  {
+    year: "2026",
+    title: "JustChat Custom Domain",
+    description:
+      "Shipped JustChatting to production on its own domain — https://justchat.page/ — real-time E2E-encrypted chat with friends system, notifications, and offline support",
+    color: "#3b82f6",
+  },
+  {
+    year: "2026",
+    title: "Doppel Launch",
+    description:
+      "Solo-built autonomous browser-agent platform (Next.js 16, Convex, Clerk, stealth microVM browsers + custom MCP tooling) that triages inboxes, does outreach, and applies to jobs logged in as you — with live trace streaming and video replay",
+    color: "#8b5cf6",
+  },
+  {
+    year: "2026",
+    title: "Terminal Portfolio on npm",
+    description:
+      "Published shreyansh-tui — my interactive portfolio that lives in the terminal (Ink + React). Run it anywhere with npx shreyansh or bunx shreyansh",
+    color: "#10b981",
     current: true,
   },
 ];
 
 const stats = [
-  { value: "7+", label: "Projects" },
+  { value: "9+", label: "Projects" },
   { value: "3+", label: "Years" },
   { value: "5", label: "Awards" },
   { value: "8.4", label: "CGPA" },
 ];
 
 const quickLinks = [
+  {
+    label: "Doppel",
+    description: "Autonomous browser agent",
+    href: "https://doppel-phi.vercel.app/",
+    icon: Bot,
+  },
   {
     label: "SQLBuddy",
     description: "SQL interview prep",
@@ -233,7 +280,7 @@ const quickLinks = [
   {
     label: "JustChatting",
     description: "Real-time E2E chat app",
-    href: "https://justchatting-eight.vercel.app",
+    href: "https://justchat.page/",
     icon: MessageSquare,
   },
   {
@@ -337,8 +384,10 @@ export default function Home() {
                 Full-stack developer building with{" "}
                 <span className="text-foreground font-medium">TypeScript</span>,{" "}
                 <span className="text-foreground font-medium">Rust</span>, and{" "}
-                <span className="text-foreground font-medium">Blockchain</span>.
-                I ship production-ready systems that are fast, secure, and
+                <span className="text-foreground font-medium">
+                  agentic AI workflows
+                </span>
+                . I ship production-ready systems that are fast, secure, and
                 delightful to use.
               </p>
 
@@ -380,6 +429,24 @@ export default function Home() {
                   shineColor="#ffffff"
                   speed={2.5}
                 />
+              </div>
+
+              <div className="mt-6 flex justify-center">
+                <a
+                  href="https://github.com/ShreyanshVishwakarma/shreyansh-tui"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2.5 rounded-xl border border-foreground/10 bg-background/40 px-4 py-2.5 font-mono text-sm text-muted-foreground backdrop-blur transition-all duration-300 hover:border-emerald-500/30 hover:text-foreground"
+                >
+                  <Terminal className="h-4 w-4 text-emerald-500" />
+                  <span>
+                    <span className="select-none opacity-50">$&nbsp;</span>
+                    npx shreyansh
+                  </span>
+                  <span className="rounded-md bg-foreground/5 px-2 py-0.5 text-xs">
+                    try my terminal portfolio
+                  </span>
+                </a>
               </div>
             </div>
           </section>
@@ -452,7 +519,7 @@ export default function Home() {
                     <Layers className="h-8 w-8 text-blue-500 dark:text-blue-400 mb-3" />
                     <h3 className="text-lg font-bold">Building in Public</h3>
                     <p className="text-muted-foreground text-sm mt-1">
-                      SQLBuddy — SQL interview prep
+                      Doppel — autonomous browser agent
                     </p>
                     <p className="text-muted-foreground text-xs mt-0.5">
                       Launched 2026
@@ -742,6 +809,18 @@ export default function Home() {
                       <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                         {project.description}
                       </p>
+                      {"command" in project &&
+                        typeof project.command === "string" && (
+                          <div className="mb-4 flex items-center gap-2 rounded-lg border border-foreground/10 bg-foreground/5 px-3 py-2 font-mono text-xs text-muted-foreground">
+                            <Terminal className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                            <span className="select-all">
+                              {project.command}
+                            </span>
+                            <span className="ml-auto hidden sm:inline text-[10px] uppercase tracking-wider opacity-60">
+                              or bunx shreyansh
+                            </span>
+                          </div>
+                        )}
                       <div className="flex flex-wrap gap-1.5 mb-4">
                         {project.stack.map((t) => (
                           <span
